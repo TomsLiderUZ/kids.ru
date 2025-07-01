@@ -1,0 +1,530 @@
+.Type2 {
+  padding: 27px 21px;
+}
+
+.Type2 .picture {
+  background-color: var(--main_white_all);
+  border: 3px solid var(--lights_buttons_active_secondary);
+  border-radius: 30px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 13px;
+  height: 316px;
+  overflow: hidden;
+  position: relative;
+}
+
+.Type2 .picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.Type2 h3 {
+  text-align: center;
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 22px;
+  color: var(--text_color_dark_primary);
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.Type2 h3 svg {
+  cursor: pointer;
+}
+
+.Type2 h3 span {
+  display: block;
+  max-width: 80%;
+}
+
+.Type2 .colors {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.Type2 .colors button {
+  width: 30%;
+  height: 80px;
+  margin-bottom: 25px;
+  border-radius: 20px;
+  border: 3px solid var(--disable_components_blue);
+  font-weight: 900;
+  font-size: 15px;
+  line-height: 22px;
+  outline: none;
+  background-color: var(--text_color_light_primary);
+  color: var(--text_color_light_primary);
+  transition: 0.3s;
+  border-bottom: 8px solid var(--disable_components_blue);
+}
+
+.Type2 .colors button:active {
+  border: 3px solid var(--disable_components_blue);
+}
+
+.Type2 .colors button.розовый {
+  background-color: var(--component_pink_primary);
+  border-color: var(--component_pink_secondary);
+}
+
+.Type2 .colors button.зеленый {
+  background-color: var(--component_green_primary);
+  border-color: var(--component_green_secondary);
+}
+
+.Type2 .colors button.желтый {
+  background-color: var(--component_yellow_primary);
+  border-color: var(--component_yellow_secondary);
+}
+
+.Type2 .colors button.синий {
+  background-color: var(--component_blue_primary);
+  border-color: var(--component_blue_secondary);
+}
+
+.Type2 .colors button.оранжевый {
+  background-color: var(--component_orange_primary);
+  border-color: var(--component_orange_secondary);
+}
+
+.Type2 .colors button.красный {
+  background-color: var(--component_red_primary);
+  border-color: var(--component_red_secondary);
+}
+
+.Type2 .colors button.active {
+  color: var(--disable_components_blue);
+  background-color: var(--text_color_light_primary);
+  border-color: var(--disable_components_blue);
+}
+
+.Type2 .colors button.buttonTwoo1 {
+  width: 45%;
+  color: var(--text_color_dark_primary);
+  border-color: var(--lights_buttons_active_secondary) !important;
+  height: 100px;
+}
+
+.Type2 .colors button.buttonTwoo1.active {
+  background-color: var(--lights_buttons_active_primary);
+}
+
+.Type2 .speaker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.Type2 .speaker button {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  border-radius: 25px;
+  justify-content: center;
+  background-color: var(--main_white_all);
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--lights_buttons_active_secondary);
+  border-bottom-width: 8px;
+  transition: 0.1s;
+}
+
+.Type2 .speaker button svg {
+  width: 50px;
+  height: auto;
+}
+
+.Type2 .speaker button:active,
+.Type2 .speaker button:focus {
+  border-bottom-width: 3px;
+  background-color: var(--lights_buttons_active_primary);
+}
+
+.Type2 .blocks,
+.Type2 .blocks button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Type2 .blocks {
+  flex-wrap: wrap;
+  gap: 32px;
+  margin-top: 30px;
+}
+
+.Type2 .blocks button {
+  padding: 6px;
+  background-color: var(--main_white_all);
+  border-radius: 25px;
+  transition: 0.1s;
+  border-width: 3px;
+  border-style: solid;
+  border-color: var(--lights_buttons_active_secondary);
+  border-bottom-width: 6px;
+}
+
+.Type2 .blocks button img {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+
+.Type2 .blocks button.active {
+  background: var(--lights_buttons_active_primary);
+}
+
+.microphoneHandler {
+  margin: auto;
+  margin-top: 14px;
+}
+
+.microphoneHandlerGame2 {
+  margin-top: 20px;
+}
+
+.gameO .picture {
+  height: 380px;
+}
+
+
+.game1 .picture {
+  background-color: transparent !important;
+  border: none !important;
+  position: relative;
+}
+
+.game1 .picture img {
+  object-fit: contain;
+  position: absolute;
+}
+
+.game1 .titleText {
+  font-weight: 900;
+  font-size: 24px;
+  color: var(--text_color_dark_primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  width: 250px;
+  margin: auto;
+  height: 60px;
+  border: 3px solid var(--main_components_primary);
+}
+
+.game1 .openChest {
+  text-align: center;
+  color: var(--disable_components_gray_secondary);
+  font-weight: 900;
+  font-size: 17px;
+}
+
+.Type2 .circle {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #30688E;
+  border-radius: 50%;
+}
+
+.fortuna {
+  overflow: hidden;
+}
+
+.fortuna .colors {
+  margin-top: 50px;
+  z-index: 3;
+  position: relative;
+  justify-content: center;
+}
+
+
+
+
+
+.Type2 .cardsWrapper {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  justify-content: center;
+  text-align: center;
+}
+
+.Type2 .cardsWrapper .card {
+  width: 155px;
+  height: 115px;
+  border: 3px solid var(--lights_buttons_active_secondary);
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 900;
+  margin: auto;
+}
+
+.Type2 .cardsWrapper .matched {
+  border-color: var(--correct_answer_green_primary);
+  color: var(--green_border);
+  pointer-events: none;
+}
+
+
+
+.Type2 .cardsWrapperFive {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+}
+
+.Type2 .cardsWrapperFive div {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.Type2 .cardsWrapperFive .card {
+  width: 130px;
+  height: 100px;
+  border: 3px solid var(--lights_buttons_active_secondary);
+  border-radius: 25px;
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--text_color_dark_primary);
+  position: relative;
+}
+
+.Type2 .cardsWrapperFive .card .connector {
+  width: 10px;
+  height: 15px;
+  background-color: var(--lights_buttons_active_secondary);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 4px;
+  right: -10px;
+}
+
+.Type2 .cardsWrapperFive .card .connector .dot {
+  width: 4px;
+  height: 5px;
+  background-color: var(--main_components_secondary);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: -4px;
+  border-radius: 0 50% 50% 0;
+}
+
+.Type2 .cardsWrapperFive .rightCard .connector {
+  transform: rotate(180deg);
+  left: -10px;
+  top: 43%;
+}
+
+
+
+.Type2 .picture .chat {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 100%;
+  padding: 15px;
+  color: var(--text_color_light_primary);
+  font-size: 20px;
+  font-weight: 500;
+  overflow-y: auto;
+  gap: 5px;
+}
+
+.Type2 .picture .chat .message {
+  padding: 8px 10px;
+}
+
+.Type2 .picture .chat .left {
+  align-self: flex-start;
+  background-color: #58A700;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.Type2 .picture .chat .right {
+  align-self: flex-end;
+  background-color: var(--main_components_primary);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+
+.Type2 .buttons {
+  padding: 0 35px;
+  text-align: center;
+  margin-bottom: 132px;
+}
+
+.Type2 .buttons button {
+  width: 85%;
+  padding: 12px;
+  margin: 0 auto;
+  margin-top: 25px;
+  border-radius: 20px;
+  border: 3px solid var(--lights_buttons_active_secondary);
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 22px;
+  outline: none;
+  background-color: var(--main_white_all);
+  color: var(--text_color_dark_primary);
+  transition: 0.3s;
+  border-bottom: 8px solid var(--lights_buttons_active_secondary);
+}
+
+.Type2 .buttons button.active {
+  color: var(--correct_answer_green_primary);
+  border-color: var(--correct_answer_green_primary);
+}
+
+.Type2 .pictureThree {
+  flex-direction: column;
+  height: 340px;
+}
+
+.Type2 .pictureThree div img {
+  width: 460px;
+  height: 200px;
+  border-radius: 25px;
+  object-fit: cover;
+}
+
+.Type2 .bigChat {
+  height: 400px;
+}
+
+.Type2 .bigChat img {
+  height: auto !important;
+}
+
+@media(max-height:860px) {
+  .fortuna {
+    min-height: 870px;
+  }
+}
+
+@media(max-width:450px) {
+  .fortuna .colors {
+    margin-top: 30px;
+  }
+}
+
+@media (max-width: 390px) {
+  .Type2 .blocks {
+    gap: 15px;
+  }
+
+  .Type2 .blocks button {
+    width: 45%;
+  }
+}
+
+.type5 .svgLines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.type5 .card {
+  position: relative;
+  z-index: 2;
+}
+
+.type5 .selected {
+  border: 2px solid #007bff;
+  background-color: #e6f0ff;
+}
+
+
+
+.dropZone {
+  width: 80px;
+  height: 80px;
+  border: 3px dashed #aaa;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background-color: #fff;
+}
+
+.dropZone.filled {
+  background-color: #d0f0d0;
+  border: 3px solid #6f6;
+}
+
+
+
+.cardContainer {
+  perspective: 1000px;
+}
+
+.cardInner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  display: inline-block;
+}
+
+.flipped {
+  transform: rotateY(180deg);
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.cardFace {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 12px;
+}
+
+
+.back {
+  transform: rotateY(180deg);
+}

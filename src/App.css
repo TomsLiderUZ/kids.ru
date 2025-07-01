@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-decoration: none;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --main_components_primary: #1cb0f6;
+  --main_icons_glare: #47c4ff;
+  --disable_level_buttons_home_text: #e5e5e5;
+  --text_color_dark_primary: #333;
+  --text_color_light_primary: #fff;
+  --main_white_all: #fff;
+  --lights_buttons_active_primary: #cae5ff;
+  --disable_components_gray_primary: #d8d8d8;
+  --correct_answer_green_primary: #58cc02;
+  --incorrect_answer_red_primary: #ff4c4b;
+  --component_purple_primary: #c991ee;
+  --component_orange_primary: #ff9500;
+  --component_pink_primary: #f283c7;
+  --component_blue_primary: #5098ea;
+  --component_green_primary: #7ac70c;
+  --component_red_primary: #f85b5b;
+  --component_yellow_primary: #f5b432;
+  --main_components_secondary: #30688e;
+  --disable_components_blue: #d4deeb;
+  --disable_level_buttons_home_secondary: #929292;
+  --disable_level_buttons_home_text2: #bababa;
+  --text_color_dark_secondary: #838383;
+  --text_color_light_secondary: #ededed;
+  --disable_components_gray_bg: #ededed;
+  --lights_buttons_active_secondary: #b0d8fe;
+  --disable_components_gray_secondary: #9a9a9a;
+  --statusbar_bg_blue: #d3e5ff;
+  --correct_answer_green_bg: #d7ffb8;
+  --incorrect_answer_red_bg: #ffdfe1;
+  --correct_answer_green_secondary: #d3e5ff;
+  --incorrect_answer_red_secondary: #ec292c;
+  --component_purple_secondary: #9069cd;
+  --component_orange_secondary: #ee5900;
+  --component_pink_secondary: #ea4c89;
+  --component_blue_secondary: #186cba;
+  --component_green_secondary: #619f09;
+  --component_red_secondary: #b23232;
+  --component_yellow_secondary: #db9509;
+  --green_border: #58a700;
+  --green-border2: #79d65d;
+  --disable_level_buttons_home_primary: #E5E5E5;
+}
+
+.KIDS {
+  max-width: 500px;
+  margin: auto;
+  min-width: 320px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+button {
+  cursor: pointer;
+}
+
+.react-international-phone-input-container {
+  height: 100%;
+  width: 90%;
+  padding-left: 6px;
+}
+
+.react-international-phone-country-selector {
+  display: flex;
+  align-items: center;
+}
+
+.react-international-phone-country-selector button {
+  border: none;
+}
+
+button.blue {
+  background-color: var(--main_components_primary);
+  color: var(--text_color_light_primary);
+  border-color: var(--main_components_secondary);
+}
+
+button.blue:active {
+  border-color: var(--main_components_secondary);
+}
+
+button.green {
+  background-color: var(--correct_answer_green_primary);
+  color: var(--text_color_light_primary);
+  border-color: var(--green_border);
+}
+
+button.green:active {
+  border-color: var(--green_border);
+}
+
+button.red {
+  background-color: var(--incorrect_answer_red_primary);
+  color: var(--text_color_light_primary);
+  border-color: var(--incorrect_answer_red_secondary);
+}
+
+button.red:active {
+  border-color: var(--incorrect_answer_red_secondary);
+}
+
+button.border {
+  background-color: var(--text_color_light_primary);
+  color: var(--text_color_dark_primary);
+  border-color: var(--lights_buttons_active_secondary);
+}
+
+button.border:active {
+  border-color: var(--lights_buttons_active_secondary);
+}
+
+.fixedButton {
+  position: fixed;
+  bottom: 0;
+  max-width: 500px;
+  width: 100%;
+  padding: 36px 21px;
+  background-color: var(--main_white_all);
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  z-index: 5;
+}
+
+.heightScroll {
+  min-height: 750px;
+}
+
+.gameVideo .OutlineDrawing {
+  padding-bottom: 0;
+}
+
+.buttonMicro.activeMic {
+  background: var(--lights_buttons_active_primary) !important;
+  border-color: var(--lights_buttons_active_secondary) !important;
+  animation: pulse 1s infinite;
+}
+
+
+video {
+  background-color: transparent;
+  -webkit-background-size: cover;
+
+}
+
+.loading-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 500;
+}
+
+
+.gTLZXx {
+  filter: invert(1);
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-height: 996px) {
+  .gameVideo .fixedButton {
+    position: static;
+    bottom: 0;
+    margin-top: 30px;
+  }
+}
+
+
+.dropZone {
+  width: 80px;
+  height: 80px;
+  border: 3px dashed #aaa;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  background-color: #fff;
+}
+
+.dropZone.filled {
+  background-color: #d0f0d0;
+  border: 3px solid #6f6;
+}

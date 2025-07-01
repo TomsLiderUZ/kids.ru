@@ -1,0 +1,313 @@
+.dictionary {
+    background: linear-gradient(180deg, #FDFEFF 0%, #EBF7FE 100%);
+    min-height: 100vh;
+}
+
+.dictionary .titles h2 {
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 22px;
+    color: var(--text_color_dark_primary);
+    border-bottom: 1px solid var(--lights_buttons_active_secondary);
+    text-align: center;
+    padding: 20px 0;
+    padding-bottom: 16px;
+}
+
+.height {
+    max-height: 780px;
+    height: 100%;
+    padding-bottom: 70px;
+    overflow-y: scroll;
+}
+
+.container {
+    margin: 16px;
+    padding-top: 20px;
+    background: var(--lights_buttons_active_primary, #CAE5FF);
+    border-radius: 25px;
+    min-height: auto;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    padding-top: 0;
+    background: var(--lights_buttons_active_primary, #CAE5FF);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+
+.header button {
+    width: 65px;
+    height: 50px;
+    border-radius: 15px;
+}
+
+.header h4 {
+    color: var(--main_components_secondary);
+    font-weight: 900;
+    font-size: 20px;
+    line-height: 15px;
+}
+
+.container .center {
+    padding: 20px 15px;
+    border-radius: 25px;
+    background: var(--main_white_all);
+    border: 3px solid var(--lights_buttons_active_primary)
+}
+
+.container .center button {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    background-color: var(--main_white_all);
+    padding: 28px 20px;
+    color: var(--text_color_dark_primary);
+    margin-bottom: 15px;
+    border-radius: 20px;
+    height: 78px;
+}
+
+.container .center button:last-child {
+    margin-bottom: 0;
+}
+
+.container .center .top {
+    padding-bottom: 26px;
+    margin-bottom: 26px;
+    border-bottom: 2px solid var(--lights_buttons_active_primary)
+}
+
+.moduleView .center button {
+    border-color: var(--disable_components_gray_primary);
+    color: var(--disable_components_gray_secondary);
+}
+
+.blockView .container,
+.blockView .container .header {
+    background-color: var(--correct_answer_green_primary);
+}
+
+.blockView .container .header h4 {
+    color: var(--text_color_light_primary);
+}
+
+.blockView .container .center {
+    border-color: var(--correct_answer_green_primary);
+}
+
+.lessonView .container,
+.lessonView .container .header {
+    background-color: var(--component_pink_primary);
+}
+
+.wordListView .container,
+.wordListView .container .header {
+    background-color: var(--component_yellow_primary);
+}
+
+.iknow .container,
+.iknow .container .header {
+    background-color: var(--component_green_primary);
+}
+
+.iknow .container .center {
+    border-color: var(--component_green_primary) !important;
+}
+
+.dontNow .container,
+.dontNow .container .header {
+    background-color: var(--component_orange_primary);
+}
+
+.dontNow .container .center {
+    border-color: var(--component_orange_primary) !important;
+}
+
+.dontNow .container .center button {
+    border-color: var(--component_orange_secondary);
+}
+
+.lessonView .container .header h4 {
+    color: var(--text_color_light_primary);
+}
+
+.lessonView .container .center {
+    border-color: var(--component_pink_primary);
+}
+
+.wordListView .container .center {
+    border-color: var(--component_yellow_primary);
+}
+
+.lessonView .container .center button h4 {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: var(--text_color_dark_primary);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.lessonView .container .center button h4 span {
+    color: var(--text_color_dark_secondary);
+}
+
+
+.wordListView .container .center button {
+    border-color: var(--component_yellow_secondary);
+}
+
+
+.wordListView .header h4 {
+    text-align: center;
+}
+
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+.random {
+    padding-bottom: 120px;
+}
+
+.random .container,
+.random .container .header {
+    background-color: transparent;
+}
+
+.random .container .header {
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+
+
+.cardWrapper {
+    perspective: 1000px;
+    width: 100%;
+    margin: auto;
+    height: 405px;
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+}
+
+.flipped .card {
+    transform: rotateY(180deg);
+}
+
+.cardFront,
+.cardBack {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24px;
+    font-weight: bold;
+    border: 3px solid var(--lights_buttons_active_secondary);
+    border-radius: 20px;
+    background: var(--text_color_light_primary);
+}
+
+.cardBack {
+    transform: rotateY(180deg);
+}
+
+/* Slide animations */
+.slideLeft {
+    animation: slide-left 0.3s ease forwards;
+}
+
+.slideRight {
+    animation: slide-right 0.3s ease forwards;
+}
+
+@keyframes slide-left {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+@keyframes slide-right {
+    0% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 12px;
+}
+
+
+
+.random .buttons button {
+    background-color: transparent !important;
+    color: var(--text_color_dark_primary);
+}
+
+
+.cardFront h3,
+.cardBack h3 {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 180px;
+    text-align: center;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 36px;
+}
+
+.cardFront h3 span,
+.cardBack h3 span {
+    font-weight: 900;
+    font-size: 29px;
+    color: var(--text_color_dark_primary);
+}
+
+.cardFront h3 svg,
+.cardBack h3 svg {
+    height: 38px;
+    width: 54px;
+}
+
+.cardFront p,
+.cardBack p {
+    color: var(--statusbar_bg_blue);
+    font-weight: 900;
+    font-size: 14px;
+    margin-top: 36px;
+}

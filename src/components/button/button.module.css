@@ -1,0 +1,20 @@
+.button {
+  width: 100%;
+  border: 3px solid var(--disable_components_blue);
+  height: 60px;
+  border-radius: 20px;
+  border-bottom: 8px solid var(--disable_components_blue);
+  transition: 0.1s;
+  font-weight: 900;
+  font-size: 17px;
+  line-height: 22px;
+  color: var(--disable_components_blue);
+  background-color: var(--main_white_all);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.button:active {
+  border: 3px solid var(--disable_components_blue);
+}

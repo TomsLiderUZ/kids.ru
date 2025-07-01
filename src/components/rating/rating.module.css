@@ -1,0 +1,43 @@
+.rating {
+  width: 100%;
+  border-bottom: 1px solid var(--lights_buttons_active_secondary);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+.rating .right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rating .rangeHandler {
+  height: 15px;
+  width: 100%;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--statusbar_bg_blue);
+}
+.rating .rangeHandler .range {
+  background-color: var(--main_components_primary);
+  width: 10%;
+  border-radius: 8px;
+  height: 100%;
+  position: relative;
+  padding: 3px 5px;
+}
+
+.rating .rangeHandler .range .shadow {
+  height: 5px;
+  width: 40%;
+  border-radius: 8px;
+  background-color: var(--main_icons_glare);
+}
+
+.rating .right h3 {
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 22px;
+  color: var(--main_components_primary);
+}

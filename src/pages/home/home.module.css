@@ -1,0 +1,366 @@
+.home {
+    position: relative;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: #CDE260;
+    height: 100%;
+}
+
+.home .bg {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.home .container {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.previousButton {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 85px;
+    text-align: center;
+}
+
+.previousButton p {
+    font-size: 17px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 22px;
+    margin-bottom: 16px;
+    color: var(--text_color_dark_secondary);
+}
+
+
+.titleCard {
+    background-color: var(--main_white_all);
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    margin-top: 138px;
+    margin-left: 25px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 104px;
+    box-shadow: -3px 4px 0px var(--main_components_primary);
+    margin-bottom: 200px;
+}
+
+.titleCard::after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    left: -12px;
+    width: 205px;
+    height: 104px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.09);
+    z-index: -1;
+    transform: rotate(-10deg);
+}
+
+.titleCard h1 {
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 22px;
+    color: var(--main_components_primary);
+    letter-spacing: 0.15px;
+}
+
+
+.lessonsTitle {
+    width: 186px;
+    height: 127px;
+    background: url("/public/assets/images/lessons.svg") no-repeat;
+    background-size: contain;
+    padding-top: 17px;
+
+}
+
+.lessonsTitle h2 {
+    width: 86%;
+    margin: auto;
+    font-weight: 900;
+    font-size: 13px;
+    line-height: 15px;
+    letter-spacing: 0.15px;
+    color: var(--main_white_all);
+    text-align: center;
+    text-shadow:
+        -1px 0px 0 #995817,
+        1px 0px 0 #995817,
+        0px -1px 0 #995817,
+        0px 1px 0 #995817,
+        1px 1px 0 #995817,
+        -1px -1px 0 #995817;
+
+}
+
+.animation {
+    position: absolute;
+    right: 0;
+    top: 137px;
+}
+
+.animation video {
+    height: 225px;
+    transform: scale(1.1);
+}
+
+.full {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    width: 100%;
+}
+
+.gameBtn {
+    width: 64px;
+    height: 36px;
+    background-color: var(--disable_level_buttons_home_primary);
+    border: none;
+    border-radius: 50%;
+    box-shadow:
+        0 8px 0px var(--disable_level_buttons_home_secondary);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-weight: 900;
+    font-size: 13px;
+    color: var(--disable_level_buttons_home_text2);
+    outline: none;
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonShadow {
+    position: absolute;
+}
+
+.buttonShadow svg {
+    position: absolute;
+    width: 70px;
+    z-index: -2;
+    top: 14px;
+    left: -2.5px;
+}
+
+.gameBtn:active {
+    box-shadow:
+        0 3px 0px var(--disable_level_buttons_home_secondary);
+    transform: translateY(7px);
+}
+
+.full .lessons {
+    position: relative;
+    margin-bottom: 270px;
+}
+
+.full .lessons .buttonShadow:nth-child(1) {
+    top: 70px;
+    left: 240px;
+}
+
+.full .lessons .buttonShadow:nth-child(2) {
+    top: 150px;
+    left: 150px;
+}
+
+.full .lessons .buttonShadow:nth-child(3) {
+    top: 225px;
+    left: 70px;
+}
+
+.full .lessons .buttonShadow:nth-child(4) {
+    top: 300px;
+    left: 150px;
+}
+
+
+.full .lessons:nth-child(3) .buttonShadow:nth-child(1) {
+    top: 78px;
+    left: 210px;
+}
+
+.full .lessons:nth-child(3) .buttonShadow:nth-child(2) {
+    top: 153px;
+    left: 101px;
+}
+
+.full .lessons:nth-child(3) .buttonShadow:nth-child(3) {
+    top: 230px;
+    left: 195px;
+}
+
+.full .lessons:nth-child(3) .buttonShadow:nth-child(4) {
+    top: 310px;
+    left: 275px;
+}
+
+.bush,
+.river {
+    position: absolute;
+    z-index: 2;
+
+}
+
+.river {
+    right: 0;
+    top: 690px;
+    width: 42%;
+}
+
+
+.river2 {
+    left: -2px;
+    width: 30%;
+    top: 1200px;
+}
+
+.river img,
+.river2 img,
+.bush img {
+    width: 100%;
+}
+
+
+.bush {
+    left: -2px;
+    top: 1010px;
+    width: 30%;
+}
+
+
+
+.full .lessons:last-child .lessonsTitle {
+    right: 0;
+    top: -20px;
+    position: absolute;
+}
+
+
+.full .lessons:nth-child(4) .buttonShadow:nth-child(1) {
+    top: 70px;
+    left: 130px;
+}
+
+.full .lessons:nth-child(4) .buttonShadow:nth-child(2) {
+    top: 160px;
+    left: 101px;
+}
+
+.full .lessons:nth-child(4) .buttonShadow:nth-child(3) {
+    top: 230px;
+    left: 195px;
+}
+
+.full .lessons:nth-child(4) .buttonShadow:nth-child(4) {
+    top: 300px;
+    left: 280px;
+}
+
+
+.home .footer {
+    position: absolute;
+    z-index: 2;
+    top: 1640px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    text-align: center;
+}
+
+.home .footer p {
+    font-weight: 900;
+    font-size: 17px;
+    line-height: 22px;
+    color: var(--text_color_dark_secondary);
+    margin-bottom: 16px;
+}
+
+.modal {
+    max-width: 500px;
+    width: 100%;
+    height: 100vh;
+    position:fixed;
+    top: 0;
+    z-index: 900;
+    background-color: rgba(0, 0, 0, 0.09);
+    margin: 0 auto; 
+}
+
+.modal .modalContent {
+    width: 75%;
+    height: 485px;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 80px;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 11px;
+    text-align: center;
+}
+
+.modal .modalContent .title p {
+    font-size: 24px;
+    font-weight: 900;
+    color: var(--main_components_secondary);
+    margin-top: 31px;
+    line-height: 25px;
+}
+
+.modal .modalContent img {
+    width: 200px;
+}
+
+.modal .modalContent .subtitle h3 {
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 22px;
+    color: var(--disable_level_buttons_home_text);
+}
+
+.modal .modalContent .button {
+    max-width: 85%;
+    width: 100%;
+}
+
+
+@media(max-width:370px) {
+    .lessonsTitle {
+        margin-left: 40px;
+        width: 170px;
+        padding-top: 15px;
+    }
+
+    .full .lessons:last-child .lessonsTitle {
+        margin-left: 0;
+        right: 40px;
+    }
+
+    .titleCard {
+        margin-left: 50px;
+        width: 170px;
+    }
+
+    .titleCard::after {
+        width: 196px;
+    }
+
+    .modal .modalContent {
+        width: 85%;
+    }
+}

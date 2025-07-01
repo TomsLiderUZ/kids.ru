@@ -1,0 +1,119 @@
+.onboarding {
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #FDFEFF 0%, #EBF7FE 100%);
+    padding: 15px 35px;
+    position: relative;
+    overflow-y: auto;
+    padding-bottom: 160px;
+}
+
+.onboarding::-webkit-scrollbar {
+    display: none;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: 800;
+    text-align: left;
+    margin-top: 50px;
+}
+
+.subtitle {
+    font-size: 15px;
+    font-weight: 800;
+    color: var(--text_color_dark_secondary);
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.animation {
+    position: absolute;
+    left: 0;
+    margin-top: 70px;
+    text-align: center;
+}
+
+.animation video {
+    width: 100%;
+    height: auto;
+    transform: scale(1.3);
+}
+
+.head {
+    width: 100%;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--lights_buttons_active_secondary);
+}
+
+.onboarding input {
+    max-width: 500px;
+    width: 100%;
+    height: 55px;
+    border: 3px solid var(--disable_components_gray_primary);
+    border-radius: 15px;
+    padding-left: 20px;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.onboarding input::placeholder {
+    color: var(--disable_components_gray_secondary);
+}
+
+.onboarding [type=number]::-webkit-inner-spin-button,
+.onboarding [type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.checkboxList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.checkboxList .checkboxItem {
+    display: flex;
+    cursor: pointer;
+}
+
+.checkboxList .checkboxItem .checkboxItem_left {
+    width: 100%;
+    height: 55px;
+    border: 3px solid var(--disable_components_gray_primary);
+    border-radius: 15px 0 0 15px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.checkboxList .checkboxItem .checkboxItem_right {
+    width: 55px;
+    height: 55px;
+    border: 3px solid var(--disable_components_gray_primary);
+    border-radius: 0 15px 15px 0;
+    position: relative;
+}
+
+.checkboxList .selected .checkboxItem_right {
+    background-color: var(--main_components_primary);
+    border-color: var(--main_components_primary);
+}
+
+.checkboxList .selected .checkboxItem_left {
+    border-color: var(--main_components_primary);
+}
+
+.checkboxList .selected .checkboxItem_right::before {
+    content: '✔';
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 30px;
+    font-weight: 900;
+    transform: translate(-50%, -50%);
+}

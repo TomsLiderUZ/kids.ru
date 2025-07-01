@@ -1,0 +1,16 @@
+button.buttonMicro {
+  width: 80px !important;
+  height: 80px;
+  transition: all 0.3s ease;
+}
+
+.buttonMicro.activeMic {
+  background-color: #1cb0f6;
+  /* Faol mikrofon uchun fon */
+  box-shadow: 0px 0px 10px rgba(28, 176, 246, 0.8);
+  /* Yorqin nurlanish */
+}
+
+button:disabled {
+  opacity: .5;
+}

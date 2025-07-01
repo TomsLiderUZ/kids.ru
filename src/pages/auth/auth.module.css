@@ -1,0 +1,179 @@
+.register {
+  background: linear-gradient(180deg, #fdfeff 0%, #ebf7fe 100%);
+  height: 100vh;
+  padding-top: 50px;
+}
+
+.register .title h1 {
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 22px;
+  color: var(--text_color_dark_primary);
+  text-align: center;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--lights_buttons_active_secondary);
+}
+
+.register form {
+  padding: 16px 36px;
+}
+form .inputs {
+  border: 3px solid var(--lights_buttons_active_secondary);
+  border-radius: 20px;
+  background-color: #fff;
+  margin-bottom: 11px;
+}
+
+form .inputs .inputHandler {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  border-bottom: 3px solid var(--lights_buttons_active_secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+form .inputs .inputHandler input {
+  height: 100%;
+  border: none;
+  padding-left: 10px;
+  outline: none;
+  background-color: transparent;
+  width: 90%;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 22px;
+  color: var(--text_color_dark_primary);
+}
+
+form .inputs .inputHandler input.errorInput {
+  color: var(--incorrect_answer_red_primary);
+}
+
+form .inputs .inputHandler input.trueInput {
+  color: var(--correct_answer_green_primary);
+}
+form .inputs .inputHandler input::placeholder {
+  color: var(--disable_components_gray_primary);
+  font-size: 18px;
+  font-weight: 800;
+}
+
+form .inputs .inputHandler .icon {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+  border-right: 1px solid var(--main_components_secondary);
+}
+form .inputs .inputHandler .svgIcon {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 50px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+form .inputs .inputHandler:last-child {
+  border-bottom: none;
+}
+
+form .inputs .inputPhoneNumber {
+  position: relative;
+  overflow: visible;
+}
+
+form .inputs .react-international-phone-input-container input {
+  height: 100%;
+  width: 100%;
+  padding-left: 50px;
+}
+
+form .bottom {
+  text-align: center;
+  margin-top: 11px;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 22px;
+  color: var(--text_color_dark_primary);
+}
+
+form .bottom a {
+  color: var(--main_components_primary);
+}
+
+p.error {
+  color: var(--incorrect_answer_red_primary);
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  margin-bottom: 11px;
+}
+
+.sms {
+  padding: 16px 36px;
+  text-align: center;
+}
+
+.sms .title {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text_color_dark_primary);
+}
+
+.sms .subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text_color_dark_secondary);
+  line-height: 16px;
+  margin-top: 10px;
+}
+
+.sms .inputs {
+  display: flex;
+  justify-content: center;
+  gap: 13px;
+  margin: 24px auto;
+}
+
+.sms .inputs input {
+  width: 60px;
+  height: 60px;
+  border: 3px solid var(--disable_components_gray_primary);
+  border-radius: 20px;
+  outline: none;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text_color_dark_primary);
+}
+
+.sms .inputs input::-webkit-outer-spin-button,
+.sms .inputs input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sms .inputs input::placeholder{
+  color: var(--text_color_dark_primary);
+}
+
+.sms .inputs .active {
+  border-color: var(--lights_buttons_active_secondary);
+}
+
+.sms .link p {
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 22px;
+  color: var(--main_components_secondary);
+  margin-top: 24px;
+  cursor: pointer;
+}
