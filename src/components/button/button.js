@@ -7,7 +7,8 @@ const Button = React.memo(({ value, className, onClick,
     disabled,
     svgLeft,
     svgRight,
-    style
+    style,
+    type
 }) => {
     const {
         isCorrect,
@@ -29,6 +30,7 @@ const Button = React.memo(({ value, className, onClick,
             onClick={handleBUttonClick}
             className={`${styles.button} ${className}`}
             style={style}
+            type={type}
         >
             {svgLeft}
             {value}

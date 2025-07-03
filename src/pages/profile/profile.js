@@ -36,6 +36,21 @@ const Profile = React.memo(() => {
         setOpenSettings(true)
     }
 
+    const handleSaveName = () => {
+        const nameInput = document.querySelector('input[type="text"]');
+        const ageInput = document.querySelector('input[type="number"]');
+        const newName = nameInput.value;
+        const newAge = ageInput.value;
+        setData(prevData => ({
+            ...prevData,
+            name: newName,
+            age: newAge
+        }));
+        localStorage.setItem("user", newName);
+        setOpenEditing(false);
+    }
+
+
     return (
         <>
             <div className={styles.Profile}>
@@ -46,7 +61,7 @@ const Profile = React.memo(() => {
                                 <img src="/assets/images/boy.jpg" alt="" />
                             </div>
                             <p className={styles.name}>{data.name}</p>
-                            <p className={styles.age}></p>
+                            <p className={styles.age}>{data.age} лет</p>
                         </div>
                         <div className={styles.buttons}>
                             <button className={styles.editButton} onClick={() => setOpenEditing(true)} >Редактировать <img src="/assets/images/editIcon.svg" alt="" /></button>
@@ -136,7 +151,7 @@ const Profile = React.memo(() => {
                 }
 
                 {openEditing &&
-                    <div>
+                    <form>
                         <div className={styles.picture}><div className={styles.name}>РЕДАКТИРОВАТЬ</div></div>
                         <div style={{ marginTop: "27px" }} className={styles.imgWrapper}>
                             <img src="/assets/images/boy.jpg" alt="" />
@@ -144,20 +159,21 @@ const Profile = React.memo(() => {
                         <div className={styles.inputs}>
                             <div className={styles.inputWrapper}>
                                 <p>Укажите имя:</p>
-                                <input type="text" />
+                                <input type="text" defaultValue={data.name} />
                             </div>
                             <div className={styles.inputWrapper}>
-                                <p>Укажите возраст::</p>
-                                <input type="number" />
+                                <p>Укажите возраст:</p>
+                                <input type="number" min={1} max={92000} defaultValue={data.age} />
                             </div>
                         </div>
                         <div className={styles.button}>
                             <Button
                                 value="СОХРАНИТЬ"
                                 className="blue"
+                                onClick={handleSaveName}
                             />
                         </div>
-                    </div>}
+                    </form>}
 
 
                 {openSettings && <Settings />}

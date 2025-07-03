@@ -1,33 +1,36 @@
-import React, { useState } from 'react'
-import styles from "./lessonBadge.module.css"
-import Button from '../button/button'
-import { useGlobalContext } from '../../context/globalContext'
-import { useNavigate } from 'react-router-dom'
+// LessonBadge.jsx
+import React, { useState } from "react";
+import styles from "./lessonBadge.module.css";
+import Button from "../button/button";
+import { useGlobalContext } from "../../context/globalContext";
+import { useNavigate } from "react-router-dom";
+import ConfettiCanvas from "../confettiCanvas/ConfettiCanvas.js";
 
 const LessonBadge = () => {
-  const [openCard, setOpenCard] = useState(false)
-  const navigate = useNavigate()
-
-  const {
-    lessonBadge, setLessonBadge, finishedLessonId
-  } = useGlobalContext()
+  const [openCard, setOpenCard] = useState(false);
+  const navigate = useNavigate();
+  const [isActiveButton, setSsActiveButton] = useState(true)
+  const { lessonBadge, setLessonBadge, finishedLessonId } = useGlobalContext();
 
   const handleButtonClick = () => {
     if (!openCard) {
-      setOpenCard(true)
-    }else {
-      setLessonBadge(false)
-      navigate('/')
+      setOpenCard(true);
+    } else {
+      setLessonBadge(false);
+      navigate("/");
     }
-  }
+  };
 
   return (
-    <>
+    <div className={styles.screen}>
       <div className={styles.container}>
-        <div className={`${styles.cardWrapper} ${openCard ? styles.flipped : ''}`}>
+        <ConfettiCanvas openCard={openCard} />
+        <div className={`${styles.cardWrapper} ${openCard ? styles.flipped : ""}`}>
           <div className={styles.cardFront}>
             <img src="/assets/images/closedLessonBadge.png" alt="" />
-            <p><span>?</span> <br /> СЕКРЕТНАЯ КАРТОЧКА</p>
+            <p>
+              <span>?</span> <br /> СЕКРЕТНАЯ КАРТОЧКА
+            </p>
           </div>
 
           <div className={styles.cardBack}>
@@ -48,13 +51,13 @@ const LessonBadge = () => {
         <div className={styles.button}>
           <Button
             value={openCard ? "ЗАВЕРШИТЬ" : "ОТКРЫТЬ КАРТОЧКУ"}
-            className="blue"
+            className={isActiveButton ? "blue" : ""}
             onClick={handleButtonClick}
           />
         </div>
       </div>
-    </>
-  )
-}
+    </div>
+  );
+};
 
-export default LessonBadge
+export default LessonBadge;

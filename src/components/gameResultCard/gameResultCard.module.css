@@ -1,148 +1,157 @@
+.screen {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
 .container {
-    width: 100%;
-    height: 100vh;
-    position: sticky;
-    top: 0;
-    left: 0;
-    background: linear-gradient(180deg, #FDFEFF 0%, #EBF7FE 100%);
-    z-index: 999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
+  width: 500px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, #fdfeff 0%, #ebf7fe 100%);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
 }
 
 .cardWrapper {
-    width: 350px;
-    height: 480px;
-    perspective: 1000px;
-    margin-top: 100px;
-    position: relative;
+  width: 350px;
+  height: 480px;
+  perspective: 1000px;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+    transform: translateY(-50%);
 }
 
 .cardFront,
 .cardBack {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    backface-visibility: hidden;
-    transition: transform 0.8s ease-in-out;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: transform 0.8s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .cardFront img,
 .cardBack img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .cardFront {
-    transform: rotateY(0deg);
-    z-index: 2;
+  transform: rotateY(0deg);
+  z-index: 2;
 }
 
 .cardBack {
-    transform: rotateY(180deg);
-    z-index: 1;
+  transform: rotateY(180deg);
+  z-index: 1;
 }
 
 .flipped .cardFront {
-    transform: rotateY(180deg);
-    z-index: 1;
+  transform: rotateY(180deg);
+  z-index: 1;
 }
 
 .flipped .cardBack {
-    transform: rotateY(0deg);
-    z-index: 2;
+  transform: rotateY(0deg);
+  z-index: 2;
 }
 
 .star2 {
-    width: 160px !important;
-    position: absolute;
-    top: 60px;
-    left: 50%;
-    transform: translateX(-50%);
+  width: 160px !important;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .stepCounter {
-    width: 100px;
-    height: 53px;
-    background-color: white;
-    border: 5px solid #AD9450;
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 53%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 999;
-    color: var(--main_components_primary);
-    font-size: 42px;
-    font-weight: 900;
-    text-shadow:
-        0 0 3px var(--main_components_secondary),
-        0 0 3px var(--main_components_secondary),
-        0 0 3px var(--main_components_secondary),
-        0 0 3px var(--main_components_secondary);
+  width: 100px;
+  height: 53px;
+  background-color: white;
+  border: 5px solid #ad9450;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  color: var(--main_components_primary);
+  font-size: 42px;
+  font-weight: 900;
+  text-shadow: 0 0 3px var(--main_components_secondary),
+    0 0 3px var(--main_components_secondary),
+    0 0 3px var(--main_components_secondary),
+    0 0 3px var(--main_components_secondary);
 }
 
 .text {
-    width: 80%;
-    position: absolute;
-    top: 70%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    z-index: 999;
-    letter-spacing: 0px;
-    line-height: 1;
-    font-size: 24px;
-    font-weight: 900;
-    color: white;
-    text-shadow:
-        0 0 3px #AD9450,
-        0 0 3px #AD9450,
-        0 0 3px #AD9450,
-        0 0 3px #AD9450;
+  width: 80%;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 999;
+  letter-spacing: 0px;
+  line-height: 1;
+  font-size: 24px;
+  font-weight: 900;
+  color: white;
+  text-shadow: 0 0 3px #ad9450, 0 0 3px #ad9450, 0 0 3px #ad9450,
+    0 0 3px #ad9450;
 }
 
 .bottomImg {
-    width: 311px !important;
-    position: absolute;
-    left: 19px;
-    bottom: 33px;
+  width: 311px !important;
+  position: absolute;
+  left: 19px;
+  bottom: 33px;
 }
 
 .buttonGroup {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 40px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .hexButton {
-    width: 170px;
-    height: 80px;
-    background-color: #00aef3;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 0 10px;
-    border: none;
-    cursor: pointer;
-    border: 3px solid var(--main_components_secondary);
-    border-bottom-width: 5px;
-    border-radius: 12px;
-    transition: background-color 0.3s ease;
-    min-width: 180px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 170px;
+  height: 80px;
+  background-color: #00aef3;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 0 10px;
+  cursor: pointer;
+  border: 3px solid var(--main_components_secondary);
+  border-bottom-width: 5px;
+  border-radius: 12px;
+  transition: background-color 0.3s ease;
+  min-width: 180px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

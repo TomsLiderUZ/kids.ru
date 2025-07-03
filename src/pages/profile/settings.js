@@ -51,8 +51,8 @@ const Settings = () => {
             <img src="/assets/images/sound.svg" alt="" />
             <p>Язык</p>
           </div>
-          <div className={`${styles.switchButton} ${language === "english" ? styles.switchOff : ""}`} onClick={toggleLanguage}>
-            <div className={styles.switchIndicator}>{language === "russian" ? "RU" : "ENG"}</div>
+          <div className={`${styles.switchButton} ${language === "english" ? styles.switchLang : ""}`} onClick={toggleLanguage}>
+            <div className={styles.switchIndicator}>{language === "russian" ? "ENG" : "RU"}</div>
           </div>
         </div>
       </div>

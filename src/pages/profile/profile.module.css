@@ -295,9 +295,6 @@
     cursor: pointer;
 }
 
-.Settings .settingsItem .switchOff {
-    background-color: var(--disable_components_gray_primary);
-}
 
 .Settings .switchButton .switchIndicator {
     width: 35px;
@@ -314,10 +311,17 @@
     right: 0;
     transition: 0.2s ease right;
 }
+.Settings .settingsItem .switchOff {
+    background-color: var(--disable_components_gray_primary);
+}
 
 .Settings .switchOff .switchIndicator {
     right: 25px;
     background-color: var(--disable_components_gray_secondary);
+}
+
+.Settings .switchLang .switchIndicator {
+    right: 25px;
 }
 
 .Settings .streakCard {
