@@ -324,6 +324,7 @@
 
 .modal .modalContent img {
     width: 200px;
+    height: 200px;
 }
 
 .modal .modalContent .subtitle h3 {
