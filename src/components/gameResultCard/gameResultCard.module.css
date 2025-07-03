@@ -13,6 +13,7 @@
 
 .container {
   width: 500px;
+  height: 100vh;
   position: sticky;
   top: 0;
   left: 0;
@@ -31,7 +32,7 @@
   margin: 0 auto;
   position: absolute;
   top: 50%;
-    transform: translateY(-50%);
+  transform: translateY(-50%);
 }
 
 .cardFront,
@@ -129,11 +130,18 @@
 }
 
 .buttonGroup {
+  position: absolute;
+  bottom: 32px;
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 30px;
   flex-wrap: wrap;
-  margin-bottom: 20px;
+}
+
+.button {
+  width: 330px;
+  position: absolute;
+  bottom: 32px;
 }
 
 .hexButton {
@@ -154,4 +162,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.hexButton:active {
+  border: 3px solid var(--main_components_secondary);
 }

@@ -6,13 +6,22 @@ import { useParams } from "react-router-dom";
 const Button = lazy(() => import("../../../../components/button/button"));
 const Alert = lazy(() => import("../../../../components/alert/alert"));
 const Title = lazy(() => import("../../../../components/title/title"));
-const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
+const GameVideo = lazy(() =>
+  import("../../../../components/gameVideo/gameVideo")
+);
 
 const Type4 = React.memo(() => {
-  const { id } = useParams()
+  const { id } = useParams();
   const [lessonId, gameId] = id.split(".");
 
-  const { isCorrect, setIsCorrect, handleSpeak, setOpenResultCard, setCurrentLessonId, setCurrentGameId } = useGlobalContext();
+  const {
+    isCorrect,
+    setIsCorrect,
+    handleSpeak,
+    setOpenResultCard,
+    setCurrentLessonId,
+    setCurrentGameId,
+  } = useGlobalContext();
   const [gameData, setGameData] = useState(null);
   const [alertHandler, setAlertHandler] = useState(false);
   const [activeButton, setActiveButton] = useState(null);
@@ -27,11 +36,11 @@ const Type4 = React.memo(() => {
     { id: 4, text: "Как тебя зовут?" },
     { id: 5, text: "Привет" },
     { id: 6, text: "Как дела?" },
-  ]
+  ];
 
   const handleButtonClick = (index) => {
     if (selected.includes(index) || matched.includes(index)) return;
-    setActiveButton(index)
+    setActiveButton(index);
     const newSelected = [...selected, index];
     setSelected(newSelected);
     handleSpeak(cards[index].text);
@@ -48,14 +57,14 @@ const Type4 = React.memo(() => {
   };
 
   const handleCheckResult = () => {
-      if (matched.length === cards.length) {
-        console.log("ishladi");
-        
-        setIsCorrect(true);
-      } else {
-        setIsCorrect(false);
-      }
-      setAlertHandler(true);
+    if (matched.length === cards.length) {
+      console.log("ishladi");
+
+      setIsCorrect(true);
+    } else {
+      setIsCorrect(false);
+    }
+    setAlertHandler(true);
   };
 
   useEffect(() => {
@@ -84,20 +93,27 @@ const Type4 = React.memo(() => {
 
                 return (
                   <div key={index} className={styles.cardContainer}>
-                    <div className={`${styles.cardInner} ${flipped ? styles.flipped : ""}`}>
+                    <div
+                      className={`${styles.cardInner} ${
+                        flipped ? styles.flipped : ""
+                      }`}
+                    >
                       <button
                         style={{
-                          backgroundColor:
-                            isMatched
-                              ? "white"
-                              : isSelected
-                                ? "var(--lights_buttons_active_primary)"
-                                : "white"
+                          backgroundColor: isMatched
+                            ? "white"
+                            : isSelected
+                            ? "var(--lights_buttons_active_primary)"
+                            : "white",
                         }}
-                        className={`${styles.card} ${isMatched ? styles.matched : ""}`}
+                        className={`${styles.card} ${
+                          isMatched ? styles.matched : ""
+                        }`}
                         onClick={() => handleButtonClick(index)}
                       >
-                        <span className={`${styles.cardFace} ${styles.front}`}></span>
+                        <span
+                          className={`${styles.cardFace} ${styles.front}`}
+                        ></span>
                         <span className={`${styles.cardFace} ${styles.back}`}>
                           {text}
                         </span>
@@ -107,8 +123,6 @@ const Type4 = React.memo(() => {
                 );
               })}
             </div>
-
-
           </div>
           <div className="fixedButton">
             <Button
@@ -120,14 +134,19 @@ const Type4 = React.memo(() => {
           {alertHandler && (
             <Alert
               wrong={!isCorrect}
-              correctText={!isCorrect && `Правильный ответ: ${gameData.options[gameData.correctIndex].text}`}
+              correctText={
+                !isCorrect &&
+                `Правильный ответ: ${
+                  gameData && gameData.options[gameData.correctIndex].text
+                }`
+              }
               setActiveButton={setActiveButton}
               setAlertHandler={setAlertHandler}
               onClick={() => {
                 setActiveButton(null);
                 setIsCorrect(null);
                 setAlertHandler(false);
-                setOpenResultCard(true)
+                setOpenResultCard(true);
               }}
             />
           )}

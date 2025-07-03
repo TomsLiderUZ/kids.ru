@@ -6,13 +6,13 @@ import { Link } from "react-router-dom";
 import ConfettiCanvas from "../confettiCanvas/ConfettiCanvas.js";
 
 const GameResultCard = () => {
-  const [openCard, setOpenCard] = useState(true);
+  const [openCard, setOpenCard] = useState(false);
 
   const { openResultCard, setOpenResultCard } = useGlobalContext();
 
   return (
     <>
-      {/* {openResultCard && ( */}
+      {openResultCard && (
         <div className={styles.screen}>
           <div className={styles.container}>
             <ConfettiCanvas openCard={openCard} />
@@ -47,7 +47,7 @@ const GameResultCard = () => {
             </div>
 
             {!openCard ? (
-              <div className="fixedButton">
+              <div className={styles.button}>
                 <Button
                   value="ОТКРЫТЬ КАРТОЧКУ"
                   className="blue"
@@ -74,7 +74,7 @@ const GameResultCard = () => {
             )}
           </div>
         </div>
-      {/* )} */}
+      )}
     </>
   );
 };

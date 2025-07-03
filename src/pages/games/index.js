@@ -33,7 +33,7 @@ const OutlineDrawing = React.memo(() => {
 
     return (
         <div className={styles.OutlineDrawing}>
-            {/* <LessonBadge /> */}
+            { lessonBadge && <LessonBadge />}
             <GameResultCard />
             <Rating />
             <Suspense fallback={<div className="loading-item">
