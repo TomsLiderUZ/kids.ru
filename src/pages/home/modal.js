@@ -1,7 +1,7 @@
 import Button from "../../components/button/button"
 import styles from "./home.module.css"
 
-const Modal = () => {
+const Modal = ({ setOnPaid, setOpenModal }) => {
     return (
         <div className={styles.modal}>
             <div className={styles.modalContent}>
@@ -16,6 +16,10 @@ const Modal = () => {
                     <Button
                         value="ПОЗВОНИТЬ"
                         className="blue"
+                        onClick={() => {
+                            setOnPaid(true)
+                            setOpenModal(false)
+                        }}
                     />
                 </div>
             </div>

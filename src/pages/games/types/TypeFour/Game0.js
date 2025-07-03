@@ -1,6 +1,7 @@
 import React, { lazy, useState, useEffect } from "react";
 import styles from "../../type2.module.css";
 import { useGlobalContext } from "../../../../context/globalContext";
+import { useParams } from "react-router-dom";
 
 const Button = lazy(() => import("../../../../components/button/button"));
 const Alert = lazy(() => import("../../../../components/alert/alert"));
@@ -8,9 +9,11 @@ const Title = lazy(() => import("../../../../components/title/title"));
 const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
 
 const Type4 = React.memo(() => {
-  const { handleSpeak, setOpenResultCard } = useGlobalContext();
+  const { id } = useParams()
+  const [lessonId, gameId] = id.split(".");
+
+  const { isCorrect, setIsCorrect, handleSpeak, setOpenResultCard, setCurrentLessonId, setCurrentGameId } = useGlobalContext();
   const [gameData, setGameData] = useState(null);
-  const [isCorrect, setIsCorrect] = useState(null);
   const [alertHandler, setAlertHandler] = useState(false);
   const [activeButton, setActiveButton] = useState(null);
   const [videoPlayed, setVideoPlayed] = useState(false);
@@ -36,7 +39,6 @@ const Type4 = React.memo(() => {
     if (newSelected.length === 2) {
       const [first, second] = newSelected;
       if (cards[first].text === cards[second].text) {
-        console.log("teng")
         setMatched([...matched, first, second]);
         setSelected([]);
       } else {
@@ -46,10 +48,20 @@ const Type4 = React.memo(() => {
   };
 
   const handleCheckResult = () => {
-
+      if (matched.length === cards.length) {
+        console.log("ishladi");
+        
+        setIsCorrect(true);
+      } else {
+        setIsCorrect(false);
+      }
+      setAlertHandler(true);
   };
 
-
+  useEffect(() => {
+    setCurrentLessonId(lessonId);
+    setCurrentGameId(gameId);
+  }, [lessonId, gameId]);
 
   return (
     <>

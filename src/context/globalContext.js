@@ -13,6 +13,21 @@ export const GlobalProvider = ({ children }) => {
     const [openResultCard, setOpenResultCard] = useState(false);
     const [userSpeech, setUserSpeech] = useState("");
     const [finish, setFinish] = useState(false);
+    const [currentLessonId, setCurrentLessonId] = useState(null);
+    const [currentGameId, setCurrentGameId] = useState(null);
+    const [onPaid, setOnPaid] = useState(false)
+    const [lessonBadge, setLessonBadge] = useState(false);
+    const [finishedLessonId, setFinishedLessonId] = useState(null);
+
+    const moduleGameMap = {
+        1: ["1.0", "1.1", "1.2", "1.3", "1.4", "1.5"],
+        2: ["2.0", "2.1", "2.2", "2.3", "2.4"],
+        3: ["3.0", "3.1", "3.2"],
+        4: ["4.0"],
+        5: ["5.0"],
+    };
+
+
 
     const audioCorrectRef = useRef(null);
     const audioIncorrectRef = useRef(null);
@@ -118,6 +133,35 @@ export const GlobalProvider = ({ children }) => {
         window.speechSynthesis.speak(utterance);
     };
 
+    useEffect(() => {
+        if (isCorrect === true && currentLessonId && currentGameId) {
+            const moduleKey = `module-${currentLessonId}`;
+            const gameId = `${currentLessonId}.${currentGameId}`;
+
+            const storedData = JSON.parse(localStorage.getItem(moduleKey)) || [];
+
+            const isAlreadyStored = storedData.includes(gameId);
+
+            let updated = storedData;
+            if (!isAlreadyStored) {
+                updated = [...storedData, gameId];
+                localStorage.setItem(moduleKey, JSON.stringify(updated));
+            }
+
+            const expectedGames = moduleGameMap[currentLessonId];
+            const isModuleComplete = expectedGames && expectedGames.every((id) => updated.includes(id));
+
+            if (isModuleComplete) {
+                setLessonBadge(true);
+                setFinishedLessonId(currentLessonId);
+                localStorage.removeItem(moduleKey);
+            }
+
+        }
+    }, [isCorrect]);
+
+
+
     return (
         <GlobalContext.Provider value={{
             activeButton, setActiveButton,
@@ -131,7 +175,12 @@ export const GlobalProvider = ({ children }) => {
             openResultCard,
             setOpenResultCard,
             userSpeech,
-            finish, setFinish
+            finish, setFinish,
+            currentLessonId, setCurrentLessonId,
+            currentGameId, setCurrentGameId,
+            onPaid, setOnPaid,
+            lessonBadge, setLessonBadge,
+            finishedLessonId
         }}>
             {children}
         </GlobalContext.Provider>

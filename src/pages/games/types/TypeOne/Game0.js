@@ -2,6 +2,7 @@ import React, { lazy, useEffect, useState } from "react";
 import axios from "axios";
 import { useGlobalContext } from "../../../../context/globalContext";
 import styles from "../../type2.module.css";
+import { useParams } from "react-router-dom";
 
 const Button = lazy(() => import("../../../../components/button/button"));
 const Microphone = lazy(() => import("../../../../components/microphone/microphone"));
@@ -11,6 +12,9 @@ const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"
 const Loading = lazy(() => import("../../../../components/loading/loading"));
 
 const TypeOne = React.memo(() => {
+    const { id } = useParams()
+    const [lessonId, gameId] = id.split(".");
+
     const {
         activeButton,
         setActiveButton,
@@ -22,7 +26,8 @@ const TypeOne = React.memo(() => {
         setVideoPlayed,
         micActive,
         handleSpeechRecognition,
-        setCurrentPhrase, setOpenResultCard
+        setCurrentPhrase, setOpenResultCard,
+        setCurrentLessonId, setCurrentGameId
     } = useGlobalContext();
 
     const [gameData, setGameData] = useState(null);
@@ -67,6 +72,11 @@ const TypeOne = React.memo(() => {
             }
         }
     };
+
+    useEffect(() => {
+        setCurrentLessonId(lessonId);
+        setCurrentGameId(gameId);
+    }, [lessonId, gameId]);
 
 
     return (

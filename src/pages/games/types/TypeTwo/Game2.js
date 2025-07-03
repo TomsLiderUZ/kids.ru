@@ -2,17 +2,20 @@ import React, { lazy, useState, useEffect } from "react";
 import styles from "../../type2.module.css";
 import { useGlobalContext } from "../../../../context/globalContext";
 import Loading from "../../../../components/loading/loading";
+import { useParams } from "react-router-dom";
 
 const Button = lazy(() => import("../../../../components/button/button"));
 const Alert = lazy(() => import("../../../../components/alert/alert"));
 const Title = lazy(() => import("../../../../components/title/title"));
 
 const Type2 = React.memo(() => {
-    const { handleSpeak, setOpenResultCard } = useGlobalContext();
+    const { id } = useParams()
+    const [lessonId, gameId] = id.split(".");
+
+    const { isCorrect, setIsCorrect, handleSpeak, setOpenResultCard, setCurrentLessonId, setCurrentGameId } = useGlobalContext();
     const [tasks, setTasks] = useState([]);
     const [currentTask, setCurrentTask] = useState(null);
     const [activeButton, setActiveButton] = useState(null);
-    const [isCorrect, setIsCorrect] = useState(null);
     const [alertHandler, setAlertHandler] = useState(false);
     const [videoPlayed, setVideoPlayed] = useState(false);
     const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
@@ -73,6 +76,11 @@ const Type2 = React.memo(() => {
         setIsCorrect(null);  // Javobni tozalash
         setAlertHandler(false);  // Alertni yopish
     };
+
+    useEffect(() => {
+        setCurrentLessonId(lessonId);
+        setCurrentGameId(gameId);
+    }, [lessonId, gameId]);
 
     return (
         <React.Suspense fallback={<div className="loading-item">

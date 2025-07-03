@@ -1,6 +1,7 @@
 import React, { lazy, useEffect, useState } from "react";
 import styles from "../../type2.module.css";
 import { useGlobalContext } from "../../../../context/globalContext";
+import { useParams } from "react-router-dom";
 
 // Lazy yuklanadigan komponentlar
 const Alert = lazy(() => import("../../../../components/alert/alert"));
@@ -18,6 +19,9 @@ const colorMap = {
 
 
 const Type3 = React.memo(() => {
+    const { id } = useParams()
+    const [lessonId, gameId] = id.split(".");
+
     const [droppedColors, setDroppedColors] = useState([null, null, null]);
     const [draggingColor, setDraggingColor] = useState(null);
 
@@ -29,7 +33,8 @@ const Type3 = React.memo(() => {
         setAlertHandler,
         videoPlayed,
         setVideoPlayed,
-        handleSpeak, setOpenResultCard
+        handleSpeak, setOpenResultCard,
+        setCurrentLessonId, setCurrentGameId
     } = useGlobalContext();
 
     const handleDragStart = (color) => {
@@ -57,6 +62,11 @@ const Type3 = React.memo(() => {
         setAlertHandler(false);
         setOpenResultCard(true)
     };
+
+    useEffect(() => {
+        setCurrentLessonId(lessonId);
+        setCurrentGameId(gameId);
+    }, [lessonId, gameId]);
 
     return (
         <React.Suspense fallback={<div>Loading...</div>}>

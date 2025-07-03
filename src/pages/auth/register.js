@@ -96,7 +96,7 @@ const Register = React.memo(() => {
             <div className={styles.title}>
                 <h1>РЕГИСТРАЦИЯ</h1>
             </div>
-            <form onSubmit={handleButtonClick}>
+            {/* <form onSubmit={handleButtonClick}>
                 <div className={styles.inputs}>
                     <div className={styles.inputHandler}>
                         <div className={styles.icon}>
@@ -265,9 +265,9 @@ const Register = React.memo(() => {
 
                     className={allInputsFilled && "blue"} />
                 <p className={styles.bottom}>Уже есть аккаунт? <Link to={"/login"}>Войти</Link></p>
-            </form >
+            </form > */}
 
-            {/* <SmsCodeVerification /> */}
+            <SmsCodeVerification />
         </div >
     );
 });

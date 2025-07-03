@@ -1,6 +1,7 @@
 import React, { lazy, useEffect } from "react";
 import { useGlobalContext } from "../../../../context/globalContext";
 import styles from "../../type2.module.css";
+import { useParams } from "react-router-dom";
 
 const Button = lazy(() => import("../../../../components/button/button"));
 const Microphone = lazy(() => import("../../../../components/microphone/microphone"));
@@ -9,6 +10,9 @@ const Title = lazy(() => import("../../../../components/title/title"));
 const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
 
 const TypeOne = React.memo(() => {
+    const { id } = useParams()
+    const [lessonId, gameId] = id.split(".");
+
     const {
         activeButton,
         setActiveButton,
@@ -21,13 +25,20 @@ const TypeOne = React.memo(() => {
         micActive,
         handleSpeechRecognition,
         setCurrentPhrase,
-        setOpenResultCard
+        setOpenResultCard,
+        setCurrentLessonId, setCurrentGameId
+
     } = useGlobalContext();
 
 
     useEffect(() => {
         setCurrentPhrase("Жёлтый");
     }, [setCurrentPhrase]);
+
+    useEffect(() => {
+        setCurrentLessonId(lessonId);
+        setCurrentGameId(gameId);
+    }, [lessonId, gameId]);
 
 
     return (

@@ -2,6 +2,7 @@ import React, { lazy, useState, useEffect } from "react";
 import axios from "axios";
 import styles from "../../type2.module.css";
 import { useGlobalContext } from "../../../../context/globalContext";
+import { useParams } from "react-router-dom";
 
 const Button = lazy(() => import("../../../../components/button/button"));
 const Alert = lazy(() => import("../../../../components/alert/alert"));
@@ -12,6 +13,9 @@ const Type3 = React.memo(() => {
     const [gameData, setGameData] = useState(null);
     const [clickMessages, setClickMessages] = useState([])
     const [selectedColors, setSelectedColors] = useState([])
+
+    const { id } = useParams()
+    const [lessonId, gameId] = id.split(".");
 
     const {
         activeButton,
@@ -26,7 +30,8 @@ const Type3 = React.memo(() => {
         handleSpeechRecognition,
         setCurrentPhrase,
         handleSpeak,
-        setOpenResultCard
+        setOpenResultCard,
+        setCurrentLessonId, setCurrentGameId
     } = useGlobalContext();
 
     useEffect(() => {
@@ -73,6 +78,11 @@ const Type3 = React.memo(() => {
         { id: 3, text: 'Как тебя зовут?' },
         { id: 4, text: 'Я Коля. Очень приятно!' },
     ];
+
+    useEffect(() => {
+        setCurrentLessonId(lessonId);
+        setCurrentGameId(gameId);
+    }, [lessonId, gameId]);
 
 
     return (

@@ -17,7 +17,7 @@ const GameType = lazy(() => import("./pages/games"));
 
 
 const App = React.memo(() => {
-  
+
   return (
     <div className="KIDS" translate="no">
       <Suspense fallback={<div className="loading-item">

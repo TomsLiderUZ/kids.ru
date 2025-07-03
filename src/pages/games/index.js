@@ -1,14 +1,24 @@
 import React, { useState, Suspense } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { gamesData } from "./gamesData";
 import styles from "./outline.module.css";
 import Rating from "../../components/rating/rating";
 import Loading from "../../components/loading/loading";
 import GameResultCard from "../../components/gameResultCard/gameResultCard";
+import { useGlobalContext } from "../../context/globalContext";
+import LessonBadge from "../../components/lessonBadge/lessonBadge";
 
 const OutlineDrawing = React.memo(() => {
     const { id } = useParams();
     const [currentGameId, setCurrentGameId] = useState(id || "1.0");
+
+    const { onPaid, setOnPaid, lessonBadge, setLessonBadge, } = useGlobalContext();
+
+    if (!onPaid && !currentGameId.startsWith("1.")) {
+        return (
+        <Navigate to="/" replace />
+    )
+    }
 
     const renderGame = () => {
         for (let type in gamesData) {
@@ -23,7 +33,8 @@ const OutlineDrawing = React.memo(() => {
 
     return (
         <div className={styles.OutlineDrawing}>
-            <GameResultCard />
+            {lessonBadge && <LessonBadge />}
+            {/* <GameResultCard /> */}
             <Rating />
             <Suspense fallback={<div className="loading-item">
                 <Loading />
@@ -33,5 +44,6 @@ const OutlineDrawing = React.memo(() => {
         </div>
     );
 });
+
 
 export default OutlineDrawing;

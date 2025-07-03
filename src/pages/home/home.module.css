@@ -148,7 +148,7 @@
     position: absolute;
 }
 
-.buttonShadow svg {
+.buttonShadow svg:nth-child(2) {
     position: absolute;
     width: 70px;
     z-index: -2;

@@ -1,6 +1,7 @@
 import React, { lazy, useState, useRef, useEffect } from "react";
 import styles from "../../type2.module.css";
 import { useGlobalContext } from "../../../../context/globalContext";
+import { useParams } from "react-router-dom";
 
 const Button = lazy(() => import("../../../../components/button/button"));
 const Alert = lazy(() => import("../../../../components/alert/alert"));
@@ -8,6 +9,9 @@ const Title = lazy(() => import("../../../../components/title/title"));
 const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
 
 const Type5 = React.memo(() => {
+    const { id } = useParams()
+    const [lessonId, gameId] = id.split(".");
+
     const [selectedPairs, setSelectedPairs] = useState([]);
     const [currentLeft, setCurrentLeft] = useState(null);
 
@@ -21,7 +25,8 @@ const Type5 = React.memo(() => {
         videoPlayed,
         setVideoPlayed,
         handleSpeak,
-        setOpenResultCard
+        setOpenResultCard,
+        setCurrentLessonId, setCurrentGameId
     } = useGlobalContext();
 
     const leftCards = [
@@ -93,6 +98,11 @@ const Type5 = React.memo(() => {
         setIsCorrect(allCorrect);
         setAlertHandler(true);
     };
+
+    useEffect(() => {
+        setCurrentLessonId(lessonId);
+        setCurrentGameId(gameId);
+    }, [lessonId, gameId]);
 
     return (
         <>
