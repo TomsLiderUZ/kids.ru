@@ -1,5 +1,5 @@
 // LessonBadge.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./lessonBadge.module.css";
 import Button from "../button/button";
 import { useGlobalContext } from "../../context/globalContext";
@@ -9,7 +9,7 @@ import ConfettiCanvas from "../confettiCanvas/ConfettiCanvas.js";
 const LessonBadge = () => {
   const [openCard, setOpenCard] = useState(false);
   const navigate = useNavigate();
-  const [isActiveButton, setSsActiveButton] = useState(true)
+  const [isActiveButton, setIsActiveButton] = useState(true)
   const { lessonBadge, setLessonBadge, finishedLessonId } = useGlobalContext();
 
   const handleButtonClick = () => {
@@ -20,6 +20,15 @@ const LessonBadge = () => {
       navigate("/");
     }
   };
+
+  useEffect(() => {
+    if (openCard) {
+      setIsActiveButton(false)
+      setTimeout(() => {
+        setIsActiveButton(true)
+      }, 1500);
+    }
+  }, [openCard])
 
   return (
     <div className={styles.screen}>

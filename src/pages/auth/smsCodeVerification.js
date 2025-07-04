@@ -1,16 +1,21 @@
 import { useRef, useState } from "react";
 import styles from "./auth.module.css"
 import Button from "../../components/button/button";
+import { useEncryptor } from "../../hooks/useEncryptor";
+
 
 const SmsCodeVerification = () => {
     const [allInputsFilled, setAllInputsFilled] = useState(false)
     const [updateTrigger, setUpdateTrigger] = useState(false);
+    const [data, setData] = useState(JSON.parse(localStorage.getItem("phone")))
+    const [inputCode, setInputCode] = useState(null)
 
     const inputs = useRef([]);
 
     const handleChange = (e, index) => {
         const value = e.target.value;
         const code = inputs.current.map(input => input.value).join('').split("")
+        setInputCode(code)
 
         if (code.length === 4) setAllInputsFilled(true)
 
@@ -30,7 +35,7 @@ const SmsCodeVerification = () => {
                 <p>Введите код из СМС</p>
             </div>
             <div className={styles.subtitle}>
-                <p>4-значный код был отправлен <br /> на номер +998 (99) 999-99-99</p>
+                <p>4-значный код был отправлен <br /> на номер {data[0].number}</p>
             </div>
             <div className={styles.inputs}>
                 {[0, 1, 2, 3].map((i) => (

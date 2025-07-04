@@ -130,12 +130,15 @@ const Type2 = React.memo(() => {
                             correctText={!isCorrect && `To'g'ri javob: ${currentTask.correctColor}`}
                             setActiveButton={setActiveButton}
                             setAlertHandler={setAlertHandler}
-                            onClick={continueToNextTask}
+                            onClick={ () => {
+                                continueToNextTask()
+                                if(isCorrect) setOpenResultCard(true)}
+                            }
                             // onRepeat={repeatTask}
-                            onRepeat={() => {
-                                setAlertHandler(false);
-                                setActiveButton(null);
-                            }}
+                    onRepeat={() => {
+                        setAlertHandler(false);
+                        setActiveButton(null);
+                    }}
                         />
                     )}
                 </>

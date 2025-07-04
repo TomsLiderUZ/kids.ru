@@ -31,8 +31,8 @@
   perspective: 1000px;
   margin: 0 auto;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 30%;
+  transform: translateY(-30%);
 }
 
 .cardFront,
@@ -130,22 +130,25 @@
 }
 
 .buttonGroup {
+  max-width: 100%;
+  width: 100%;
   position: absolute;
-  bottom: 32px;
+  bottom: 80px;
   display: flex;
   justify-content: center;
   gap: 30px;
-  flex-wrap: wrap;
+  padding: 0 1px;
 }
 
 .button {
   width: 330px;
   position: absolute;
-  bottom: 32px;
+  bottom: 80px;
 }
 
 .hexButton {
-  width: 170px;
+  max-width: 170px;
+  width: 100%;
   height: 80px;
   background-color: #00aef3;
   color: white;
@@ -157,7 +160,6 @@
   border-bottom-width: 5px;
   border-radius: 12px;
   transition: background-color 0.3s ease;
-  min-width: 180px;
   text-align: center;
   display: flex;
   align-items: center;

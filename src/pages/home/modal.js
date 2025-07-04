@@ -8,7 +8,7 @@ const Modal = ({ setOnPaid, setOpenModal }) => {
                 <div className={styles.title}>
                     <p>Для открытия <br /> уроков необходимо <br /> купить курс</p>
                 </div>
-                <img src="/assets/images/supportImg.png" alt="" />
+                <img src="https://i.ibb.co/8gp47xFd/support-Img.png" alt="" />
                 <div className={styles.subtitle}>
                     <h3>Связаться со службой <br /> поддержки</h3>
                 </div>

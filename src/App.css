@@ -7,10 +7,9 @@
   text-decoration: none;
   font-family: "M PLUS Rounded 1c", sans-serif;
   box-sizing: border-box;
+  /* user-select: none; */
 }
-*::selection{
-  background-color: transparent;
-}
+
 
 :root {
   --main_components_primary: #1cb0f6;
