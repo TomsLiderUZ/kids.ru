@@ -198,6 +198,10 @@
   height: 380px;
 }
 
+.container {
+    -webkit-overflow-scrolling: touch;
+}
+
 
 .game1 .picture {
   background-color: transparent !important;
@@ -483,8 +487,6 @@
   background-color: #d0f0d0;
   border: 3px solid #6f6;
 }
-
-
 
 .cardContainer {
   perspective: 1000px;

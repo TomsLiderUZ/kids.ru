@@ -118,8 +118,15 @@
   font-size: 24px;
   font-weight: 900;
   color: white;
-  text-shadow: 0 0 3px #ad9450, 0 0 3px #ad9450, 0 0 3px #ad9450,
-    0 0 3px #ad9450;
+  text-shadow:
+    -2px -2px 0 #AD9450,
+    2px -2px 0 #AD9450,
+    -2px 2px 0 #AD9450,
+    2px 2px 0 #AD9450,
+    0px 2px 0 #AD9450,
+    2px 0px 0 #AD9450,
+    0px -2px 0 #AD9450,
+    -2px 0px 0 #AD9450;
 }
 
 .bottomImg {
@@ -133,7 +140,7 @@
   max-width: 100%;
   width: 100%;
   position: absolute;
-  bottom: 80px;
+  bottom: 32px;
   display: flex;
   justify-content: center;
   gap: 30px;
@@ -143,7 +150,7 @@
 .button {
   width: 330px;
   position: absolute;
-  bottom: 80px;
+  bottom: 32px;
 }
 
 .hexButton {

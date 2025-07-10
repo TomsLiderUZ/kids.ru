@@ -14,11 +14,11 @@ const OutlineDrawing = React.memo(() => {
 
     const { onPaid, setOnPaid, lessonBadge, setLessonBadge, } = useGlobalContext();
 
-    if (!onPaid && !currentGameId.startsWith("1.")) {
-        return (
-        <Navigate to="/" replace />
-    )
-    }
+    // if (!onPaid && !currentGameId.startsWith("1.")) {
+    //     return (
+    //     <Navigate to="/" replace />
+    // )
+    // }
 
     const renderGame = () => {
         for (let type in gamesData) {

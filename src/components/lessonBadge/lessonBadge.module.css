@@ -32,8 +32,8 @@
   margin: 0 auto;
   margin-bottom: 766px;
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 40%;
+  transform: translateY(-40%);
   filter: drop-shadow(0px 8px 20px #00000040);
 }
 
@@ -84,7 +84,25 @@
   text-align: center;
   color: white;
   position: absolute;
-  top: 12px;
+  top: 8px;
+  text-shadow: -2px -2px 0 #30688e, 2px -2px 0 #30688e, -2px 2px 0 #30688e,
+    2px 2px 0 #30688e, 0px 2px 0 #30688e, 2px 0px 0 #30688e, 0px -2px 0 #30688e,
+    -2px 0px 0 #30688e;
+}
+
+.cardBack .msg {
+  font-size: 32px;
+  font-weight: 900;
+  max-width: 280px;
+  text-align: center;
+  text-wrap: wrap;
+  color: white;
+  position: absolute;
+  top: 330px;
+  line-height: 35px;
+  text-shadow: -2px -2px 0 #30688e, 2px -2px 0 #30688e, -2px 2px 0 #30688e,
+    2px 2px 0 #30688e, 0px 2px 0 #30688e, 2px 0px 0 #30688e, 0px -2px 0 #30688e,
+    -2px 0px 0 #30688e;
 }
 
 .cardBack .info {
@@ -95,6 +113,9 @@
   font-weight: 900;
   color: white;
   line-height: 1.2;
+  text-shadow: -2px -2px 0 #30688e, 2px -2px 0 #30688e, -2px 2px 0 #30688e,
+    2px 2px 0 #30688e, 0px 2px 0 #30688e, 2px 0px 0 #30688e, 0px -2px 0 #30688e,
+    -2px 0px 0 #30688e;
 }
 
 .cardBack .info img {

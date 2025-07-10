@@ -7,22 +7,29 @@ import { useParams } from "react-router-dom";
 const Button = lazy(() => import("../../../../components/button/button"));
 const Alert = lazy(() => import("../../../../components/alert/alert"));
 const Title = lazy(() => import("../../../../components/title/title"));
+const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
 
 const Type2 = React.memo(() => {
-    const { id } = useParams()
+    const { id } = useParams();
     const [lessonId, gameId] = id.split(".");
 
-    const { isCorrect, setIsCorrect, handleSpeak, setOpenResultCard, setCurrentLessonId, setCurrentGameId } = useGlobalContext();
+    const {
+        isCorrect,
+        setIsCorrect,
+        handleSpeak,
+        setOpenResultCard,
+        setCurrentLessonId,
+        setCurrentGameId,
+        isUz,
+    } = useGlobalContext();
+
     const [tasks, setTasks] = useState([]);
     const [currentTask, setCurrentTask] = useState(null);
     const [activeButton, setActiveButton] = useState(null);
     const [alertHandler, setAlertHandler] = useState(false);
     const [videoPlayed, setVideoPlayed] = useState(false);
-    const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
-
 
     useEffect(() => {
-        // 📌 Backenddan barcha topshiriqlarni olish
         fetch(`https://api.kidsru.uz/api/colorings`)
             .then((response) => response.json())
             .then((data) => {
@@ -53,28 +60,23 @@ const Type2 = React.memo(() => {
             .catch((error) => console.error("Xatolik:", error));
     };
 
-    // "Продолжить" tugmasi bosilganda keyingi topshiriqqa o'tish
     const continueToNextTask = () => {
-        const currentIndex = tasks.findIndex(task => task._id === currentTask._id);
+        const currentIndex = tasks.findIndex((task) => task._id === currentTask._id);
         const nextTask = tasks[currentIndex + 1];
 
-        if (!nextTask) {
-            return;
-        }
+        if (!nextTask) return;
 
         setCurrentTask(nextTask);
-        setActiveButton(null);  // Avvalgi tanlovni tozalash
-        setIsCorrect(null);  // Javobni tozalash
-        setAlertHandler(false);  // Alertni yashirish
-        setOpenResultCard(true)
+        setActiveButton(null);
+        setIsCorrect(null);
+        setAlertHandler(false);
+        setOpenResultCard(true);
     };
 
-
-    // "Повторить" tugmasi bosilganda alertni yopish
     const repeatTask = () => {
-        setActiveButton(null);  // Tanlangan rangni tozalash
-        setIsCorrect(null);  // Javobni tozalash
-        setAlertHandler(false);  // Alertni yopish
+        setActiveButton(null);
+        setIsCorrect(null);
+        setAlertHandler(false);
     };
 
     useEffect(() => {
@@ -83,9 +85,13 @@ const Type2 = React.memo(() => {
     }, [lessonId, gameId]);
 
     return (
-        <React.Suspense fallback={<div className="loading-item">
-            <Loading />
-        </div>}>
+        <React.Suspense
+            fallback={
+                <div className="loading-item">
+                    <Loading />
+                </div>
+            }
+        >
             {!videoPlayed ? (
                 <GameVideo
                     poster="/assets/images/poster.png"
@@ -108,7 +114,9 @@ const Type2 = React.memo(() => {
                                 {currentTask?.options?.map((color) => (
                                     <button
                                         key={color}
-                                        className={`${styles[color.toLowerCase()]} ${activeButton === color ? styles.active : ""}`}
+                                        className={`${styles[color.toLowerCase()]} ${
+                                            activeButton === color ? styles.active : ""
+                                        }`}
                                         onClick={() => handleButtonClick(color)}
                                     >
                                         {color}
@@ -119,7 +127,7 @@ const Type2 = React.memo(() => {
                     )}
                     <div className="fixedButton">
                         <Button
-                            value={"ПРОВЕРИТЬ"}
+                            value={isUz ? "TEKSHIRISH" : "ПРОВЕРИТЬ"}
                             className={activeButton ? "blue" : ""}
                             onClick={checkAnswer}
                         />
@@ -127,24 +135,24 @@ const Type2 = React.memo(() => {
                     {alertHandler && (
                         <Alert
                             wrong={!isCorrect}
-                            correctText={!isCorrect && `To'g'ri javob: ${currentTask.correctColor}`}
+                            correctText={
+                                !isCorrect &&
+                                (isUz
+                                    ? `To'g'ri javob: ${currentTask.correctColor}`
+                                    : `Правильный ответ: ${currentTask.correctColor}`)
+                            }
                             setActiveButton={setActiveButton}
                             setAlertHandler={setAlertHandler}
-                            onClick={ () => {
-                                continueToNextTask()
-                                if(isCorrect) setOpenResultCard(true)}
-                            }
-                            // onRepeat={repeatTask}
-                    onRepeat={() => {
-                        setAlertHandler(false);
-                        setActiveButton(null);
-                    }}
+                            onClick={() => {
+                                continueToNextTask();
+                                if (isCorrect) setOpenResultCard(true);
+                            }}
+                            onRepeat={repeatTask}
                         />
                     )}
                 </>
             )}
         </React.Suspense>
-
     );
 });
 

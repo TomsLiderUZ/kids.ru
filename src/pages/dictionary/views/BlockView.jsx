@@ -1,14 +1,13 @@
 import React, { lazy } from "react";
-import styles from "../dictionary.module.css"
+import styles from "../dictionary.module.css";
 import StarIcon from "../../../components/starIcon";
 import ReturnIcon from "../../../components/returnIcon";
-
 import RandomIcon from "../../../components/randomIcon";
+import { useGlobalContext } from "../../../context/globalContext";
+
 const Button = lazy(() => import("../../../components/button/button"));
 
 const COLORS = ["#EA4C89", "#186CBA", "#EE5900", "#9069CD", "#B23232", "#DB9509", "#619F09"];
-
-
 
 const getRandomColor = (excludedColors = []) => {
   const availableColors = COLORS.filter((color) => !excludedColors.includes(color));
@@ -16,24 +15,26 @@ const getRandomColor = (excludedColors = []) => {
   return availableColors[randomIndex];
 };
 
-
 const BlockView = ({ onBack, onNext, selectedModule, setView }) => {
+  const { isUz } = useGlobalContext();
 
   const topColor = getRandomColor();
   const bottomColor = getRandomColor([topColor]);
 
   return (
-    <div className={`${styles.blockView} ${styles.height}`} >
+    <div className={`${styles.blockView} ${styles.height}`}>
       <div className={styles.titles}>
-        <h2>СЛОВАРЬ</h2>
+        <h2>{isUz ? "LUG‘AT" : "СЛОВАРЬ"}</h2>
       </div>
       <div className={styles.container}>
         <div className={styles.header}>
-          <Button onClick={onBack} svgLeft={
-            <ReturnIcon />
-          } className="border" />
-          <h4>{selectedModule && selectedModule.name}</h4>
-          <Button svgLeft={<RandomIcon color="#B0D8FE" />} className="border"  onClick={() => setView("random")}/>
+          <Button onClick={onBack} svgLeft={<ReturnIcon />} className="border" />
+          <h4>{selectedModule?.name}</h4>
+          <Button
+            svgLeft={<RandomIcon color="#B0D8FE" />}
+            className="border"
+            onClick={() => setView("random")}
+          />
         </div>
 
         <div className={styles.center}>
@@ -53,9 +54,8 @@ const BlockView = ({ onBack, onNext, selectedModule, setView }) => {
           })}
         </div>
       </div>
-    </div >
-  )
-}
-
+    </div>
+  );
+};
 
 export default BlockView;

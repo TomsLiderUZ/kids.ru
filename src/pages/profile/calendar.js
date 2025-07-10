@@ -1,13 +1,25 @@
 import React, { useState } from "react";
 import styles from "./profile.module.css";
+import { useGlobalContext } from "../../context/globalContext";
 
 const CalendarCard = ({ day, active }) => {
   const [date, setDate] = useState(new Date());
+  const { isUz } = useGlobalContext();
 
-  const monthNames = [
+  const uzMonthNames = [
+    "yanvar", "fevral", "mart", "aprel", "may", "iyun",
+    "iyul", "avgust", "sentyabr", "oktyabr", "noyabr", "dekabr"
+  ];
+  const ruMonthNames = [
     "январь", "февраль", "март", "апрель", "май", "июнь",
     "июль", "август", "сентябрь", "октябрь", "ноябрь", "декабрь"
   ];
+
+  const uzDays = ["Du", "Se", "Ch", "Pa", "Ju", "Sh", "Ya"];
+  const ruDays = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"];
+
+  const monthNames = isUz ? uzMonthNames : ruMonthNames;
+  const weekDays = isUz ? uzDays : ruDays;
 
   const getDaysInMonth = (year, month) => new Date(year, month + 1, 0).getDate();
 
@@ -61,7 +73,6 @@ const CalendarCard = ({ day, active }) => {
     return days;
   };
 
-
   day(`${monthNames[date.getMonth()]} ${date.getFullYear()}`)
 
   return (
@@ -71,7 +82,7 @@ const CalendarCard = ({ day, active }) => {
         <button onClick={() => handleMonthChange(1)}>→</button>
       </div>
       <div className={styles.grid}>
-        {["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"].map((day, i) => (
+        {weekDays.map((day, i) => (
           <span key={i} className={`${styles.weekday} ${i >= 5 ? styles.dayOff : ""}`}>{day}</span>
         ))}
       </div>
@@ -81,7 +92,6 @@ const CalendarCard = ({ day, active }) => {
       <div className={styles.grid}>
         {renderDays()}
       </div>
-
     </div>
   );
 };

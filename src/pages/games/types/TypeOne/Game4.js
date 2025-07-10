@@ -10,7 +10,7 @@ const Title = lazy(() => import("../../../../components/title/title"));
 const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
 
 const TypeOne = React.memo(() => {
-    const { id } = useParams()
+    const { id } = useParams();
     const [lessonId, gameId] = id.split(".");
 
     const {
@@ -26,10 +26,10 @@ const TypeOne = React.memo(() => {
         handleSpeechRecognition,
         setCurrentPhrase,
         setOpenResultCard,
-        setCurrentLessonId, setCurrentGameId
-
+        setCurrentLessonId,
+        setCurrentGameId,
+        isUz
     } = useGlobalContext();
-
 
     useEffect(() => {
         setCurrentPhrase("Жёлтый");
@@ -39,7 +39,6 @@ const TypeOne = React.memo(() => {
         setCurrentLessonId(lessonId);
         setCurrentGameId(gameId);
     }, [lessonId, gameId]);
-
 
     return (
         <div className={styles.gameO}>
@@ -70,7 +69,7 @@ const TypeOne = React.memo(() => {
                     </div>
                     <div className={"fixedButton"}>
                         <Button
-                            value={"ПРОВЕРИТЬ"}
+                            value={isUz ? "TEKSHIRISH" : "ПРОВЕРИТЬ"}
                             className={activeButton && "blue"}
                             onClick={() => setAlertHandler(true)}
                         />
@@ -78,14 +77,14 @@ const TypeOne = React.memo(() => {
                     {alertHandler && (
                         <Alert
                             wrong={!isCorrect}
-                            correctText={!isCorrect && "Попробуйте еще раз"}
+                            correctText={!isCorrect && (isUz ? "Yana urinib ko‘ring" : "Попробуйте еще раз")}
                             setActiveButton={setActiveButton}
                             setAlertHandler={setAlertHandler}
                             onClick={() => {
                                 setActiveButton(null);
                                 setIsCorrect(null);
                                 setAlertHandler(false);
-                                setOpenResultCard(true)
+                                setOpenResultCard(true);
                             }}
                         />
                     )}

@@ -1,14 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./gameResultCard.module.css";
 import Button from "../button/button";
 import { useGlobalContext } from "../../context/globalContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import ConfettiCanvas from "../confettiCanvas/ConfettiCanvas.js";
 
 const GameResultCard = () => {
   const [openCard, setOpenCard] = useState(false);
+  const games = [
+    "1.0", "1.1", "1.2", "1.3", "1.4", "1.5",
+    "2.0", "2.1", "2.2", "2.3", "2.4",
+    "3.0", "3.1", "3.2", "4.0", "5.0"
+  ];
 
-  const { openResultCard, setOpenResultCard } = useGlobalContext();
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { openResultCard, setOpenResultCard, isUz } = useGlobalContext();
+
+  const handleNextGame = () => {
+    const currentIndex = games.indexOf(id);
+    if (currentIndex !== -1 && currentIndex + 1 < games.length) {
+      const nextGame = games[currentIndex + 1];
+      navigate(`/games/${nextGame}`);
+    }
+    window.location.reload();
+  };
 
   return (
     <>
@@ -17,9 +33,7 @@ const GameResultCard = () => {
           <div className={styles.container}>
             <ConfettiCanvas openCard={openCard} />
             <div
-              className={`${styles.cardWrapper} ${
-                openCard ? styles.flipped : ""
-              }`}
+              className={`${styles.cardWrapper} ${openCard ? styles.flipped : ""}`}
             >
               {/* FRONT SIDE */}
               <div className={styles.cardFront}>
@@ -36,7 +50,10 @@ const GameResultCard = () => {
                 <img src="/assets/images/openResultCard.png" alt="" />
                 <div className={styles.stepCounter}>5/6</div>
                 <div className={styles.text}>
-                  ИГРА 1: <br /> «Повторяй за мной» («Men bilan takrorlang»)
+                  {isUz
+                    ? <>O‘YIN 1: <br /> «Men bilan takrorlang»</>
+                    : <>ИГРА 1: <br /> «Повторяй за мной» («Men bilan takrorlang»)</>
+                  }
                 </div>
                 <img
                   className={styles.bottomImg}
@@ -49,7 +66,7 @@ const GameResultCard = () => {
             {!openCard ? (
               <div className={styles.button}>
                 <Button
-                  value="ОТКРЫТЬ КАРТОЧКУ"
+                  value={isUz ? "KARTANI OCHISH" : "ОТКРЫТЬ КАРТОЧКУ"}
                   className="blue"
                   onClick={() => setOpenCard(true)}
                 />
@@ -61,14 +78,18 @@ const GameResultCard = () => {
                   className={styles.hexButton}
                   onClick={() => setOpenResultCard(false)}
                 >
-                  ВЕРНУТЬСЯ НА КАРТУ
+                  {isUz ? "XARITAGA QAYTISH" : "ВЕРНУТЬСЯ НА КАРТУ"}
                 </Link>
                 <Link
                   to="/"
                   className={styles.hexButton}
-                  onClick={() => setOpenResultCard(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setOpenResultCard(false);
+                    handleNextGame();
+                  }}
                 >
-                  ПЕРЕЙТИ К СЛЕДУЮЩЕЙ ИГРЕ
+                  {isUz ? "KEYINGI O‘YINGA O‘TISH" : "ПЕРЕЙТИ К СЛЕДУЮЩЕЙ ИГРЕ"}
                 </Link>
               </div>
             )}

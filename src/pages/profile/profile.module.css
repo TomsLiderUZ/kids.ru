@@ -1,495 +1,491 @@
 .Profile {
-    background: linear-gradient(180deg, #fdfeff 0%, #ebf7fe 100%);
-    padding: 0 21px;
-    height: 100vh;
-    overflow-y: auto;
-    padding-bottom: 130px;
+  background: linear-gradient(180deg, #fdfeff 0%, #ebf7fe 100%);
+  padding: 0 21px;
+  height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 130px;
 }
 
 .Profile::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .Profile .picture {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 12px;
-    border-bottom: 1px solid var(--lights_buttons_active_secondary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 12px;
+  border-bottom: 1px solid var(--lights_buttons_active_secondary);
 }
 
 .Profile .imgWrapper {
-    max-width: 141px;
-    width: 100%;
-    height: 141px;
-    border-radius: 25px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #6ECEDC;
-    margin: auto;
+  max-width: 141px;
+  width: 100%;
+  height: 141px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #6ecedc;
+  margin: auto;
 }
 
 .Profile .imgWrapper img {
-    width: 90%;
+  width: 90%;
 }
 
 .Profile .picture .name {
-    font-size: 24px;
-    font-weight: 800;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    color: var(--text_color_dark_primary);
+  font-size: 24px;
+  font-weight: 800;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: var(--text_color_dark_primary);
 }
 
 .Profile .picture .age {
-    font-size: 20px;
-    font-weight: 800;
-    color: #9EA2AD;
+  font-size: 20px;
+  font-weight: 800;
+  color: #9ea2ad;
 }
 
 .Profile .buttons {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    margin-top: 18px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 18px;
 }
 
 .Profile .buttons button {
-    height: 45px;
-    background-color: white;
-    padding: 10px 20px;
-    border: 3px solid var(--lights_buttons_active_secondary);
-    border-radius: 15px;
-    font-size: 17px;
-    font-weight: 900;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    color: var(--main_components_secondary);
-    border-bottom-width: 6px;
-    transition: 0.1s;
+  height: 45px;
+  background-color: white;
+  padding: 10px 20px;
+  border: 3px solid var(--lights_buttons_active_secondary);
+  border-radius: 15px;
+  font-size: 17px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: var(--main_components_secondary);
+  border-bottom-width: 6px;
+  transition: 0.1s;
+}
+
+.Settings .editButton {
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .Settings .buttons button {
-    border-color: var(--main_components_secondary);
+  border-color: var(--main_components_secondary);
 }
 
 .Settings .buttons button img {
-    width: 30px;
+  width: 30px;
 }
 
 .Profile .buttons button:first-child {
-    width: 70%;
+  width: 70%;
 }
 
 .Profile .buttons button:active {
-    border: 3px solid var(--lights_buttons_active_secondary);
+  border: 3px solid var(--lights_buttons_active_secondary);
 }
 
 .Settings .buttons button:active {
-    border: 3px solid var(--main_components_secondary);
+  border: 3px solid var(--main_components_secondary);
 }
 
 .Profile .flex {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Profile .statsCards {
-    margin-top: 23px;
+  margin-top: 23px;
 }
 
 .Profile .card {
-    width: 112px;
-    min-height: 128px;
-    border-radius: 20px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: end;
-    align-items: center;
-    gap: 11px;
-    padding: 4px;
-    position: relative;
+  width: 112px;
+  min-height: 128px;
+  border-radius: 20px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  gap: 11px;
+  padding: 4px;
+  position: relative;
 }
 
 .Profile .green {
-    background-color: var(--component_green_primary);
-    border-bottom: 5px solid var(--component_green_secondary);
+  background-color: var(--component_green_primary);
+  border-bottom: 5px solid var(--component_green_secondary);
 }
 
 .Profile .purple {
-    background-color: var(--component_purple_primary);
-    border-bottom: 5px solid var(--component_purple_secondary);
+  background-color: var(--component_purple_primary);
+  border-bottom: 5px solid var(--component_purple_secondary);
 }
 
 .Profile .blue {
-    background-color: var(--component_blue_primary);
-    border-bottom: 5px solid var(--component_blue_secondary);
+  background-color: var(--component_blue_primary);
+  border-bottom: 5px solid var(--component_blue_secondary);
 }
 
 .Profile .orange {
-    background-color: var(--component_orange_primary);
-    border-bottom: 5px solid var(--component_orange_secondary);
+  background-color: var(--component_orange_primary);
+  border-bottom: 5px solid var(--component_orange_secondary);
 }
 
 .Profile .aqua {
-    background-color: var(--lights_buttons_active_primary);
-    border-bottom: 5px solid var(--lights_buttons_active_secondary);
+  background-color: var(--lights_buttons_active_primary);
+  border-bottom: 5px solid var(--lights_buttons_active_secondary);
 }
 
 .Profile .card .cardContent .pink {
-    background-color: var(--component_pink_primary);
+  background-color: var(--component_pink_primary);
 }
 
 .Profile .card .label {
-    width: 100%;
-    text-align: center;
-    font-size: 20px;
-    font-weight: 900;
-    color: white;
-    padding: 0 20px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+  padding: 0 20px;
 }
 
 .Profile .card .label img {
-    width: 25px;
+  width: 25px;
 }
 
 .Profile .card .cardContent {
-    width: 100%;
-    height: 80px;
-    background-color: white;
-    border-radius: 20px;
-    text-align: center;
-    padding: 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .Profile .card .cardContent p {
-    font-size: 48px;
-    font-weight: 900;
-    color: var(--text_color_dark_primary);
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--text_color_dark_primary);
 }
 
 .checkboxWrapper {
-    position: relative;
-    display: inline-block;
-    margin-top: 12px;
+  position: relative;
+  display: inline-block;
+  margin-top: 12px;
 }
 
 .checkboxWrapper input[type="checkbox"] {
-    display: none;
+  display: none;
 }
 
 .customCheckbox {
-    width: 20px;
-    height: 20px;
-    border-radius: 6px;
-    background-color: var(--disable_level_buttons_home_text);
-    display: inline-block;
-    border-radius: 50%;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.2s ease;
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  background-color: var(--disable_level_buttons_home_text);
+  display: inline-block;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-.checkboxWrapper input[type="checkbox"]:checked+.customCheckbox {
-    background-color: #4caf50;
-    border-color: #4caf50;
+.checkboxWrapper input[type="checkbox"]:checked + .customCheckbox {
+  background-color: #4caf50;
+  border-color: #4caf50;
 }
 
-.checkboxWrapper input[type="checkbox"]:checked+.customCheckbox::after {
-    content: '✔';
-    color: white;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    font-size: 14px;
-    transform: translate(-50%, -50%);
+.checkboxWrapper input[type="checkbox"]:checked + .customCheckbox::after {
+  content: "✔";
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 14px;
+  transform: translate(-50%, -50%);
 }
-
 
 .Profile .card .cardContent span {
-    font-size: 16px;
-    font-weight: 900;
-    color: #9EA2AD
+  font-size: 16px;
+  font-weight: 900;
+  color: #9ea2ad;
 }
 
 .Profile .card .cardContent .title {
-    font-size: 26px;
-    font-weight: 900;
-    color: #62656F;
+  font-size: 26px;
+  font-weight: 900;
+  color: #62656f;
 }
 
 .Profile .streakCard .label span {
-    color: var(--main_components_secondary);
+  color: var(--main_components_secondary);
 }
 
 .Profile .streakCard {
-    min-width: 100%;
-    min-height: 210px;
-    margin-top: 27px;
+  min-width: 100%;
+  min-height: 210px;
+  margin-top: 27px;
 }
 
 .Profile .streakCard .cardContent {
-    min-height: 78px;
-    height: fit-content;
-    padding: 15px;
+  min-height: 78px;
+  height: fit-content;
+  padding: 15px;
 }
 
 .Profile .streakCard .cardContent .card .label {
-    color: var(--text_color_dark_primary);
+  color: var(--text_color_dark_primary);
 }
 
 .Profile .streakCard .cardContent .card .label {
-    color: var(--text_color_dark_primary);
+  color: var(--text_color_dark_primary);
 }
-
 
 /* settings */
 
 .Settings .settingsItem {
-    max-width: 70%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 40px auto;
+  max-width: 70%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 40px auto;
 }
 
 .settingsButtons {
-    border-bottom: 1px solid var(--lights_buttons_active_secondary);
-    padding: 0;
+  border-bottom: 1px solid var(--lights_buttons_active_secondary);
+  padding: 0;
 }
 
 .settingsButtons .settingsItem:last-child {
-    margin-bottom: 26px;
+  margin-bottom: 26px;
 }
 
 .settingsButtons .settingsItem:first-child {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .Settings .settingsItem img {
-    width: 29px;
+  width: 29px;
 }
 
 .Settings .settingsItem p {
-    font-size: 24px;
-    font-weight: 900;
-    margin-left: 20px;
+  font-size: 24px;
+  font-weight: 900;
+  margin-left: 20px;
 }
 
 .Settings .settingsItem .switchButton {
-    min-width: 60px;
-    height: 30px;
-    background-color: var(--lights_buttons_active_primary);
-    border-radius: 10px;
-    position: relative;
-    cursor: pointer;
+  min-width: 60px;
+  height: 30px;
+  background-color: var(--lights_buttons_active_primary);
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
 }
-
 
 .Settings .switchButton .switchIndicator {
-    width: 35px;
-    height: 30px;
-    background-color: var(--main_components_primary);
-    border-radius: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 15px;
-    font-weight: 900;
-    color: var(--text_color_light_primary);
-    position: absolute;
-    right: 0;
-    transition: 0.2s ease right;
+  width: 35px;
+  height: 30px;
+  background-color: var(--main_components_primary);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 900;
+  color: var(--text_color_light_primary);
+  position: absolute;
+  right: 0;
+  transition: 0.2s ease right;
 }
 .Settings .settingsItem .switchOff {
-    background-color: var(--disable_components_gray_primary);
+  background-color: var(--disable_components_gray_primary);
 }
 
 .Settings .switchOff .switchIndicator {
-    right: 25px;
-    background-color: var(--disable_components_gray_secondary);
+  right: 25px;
+  background-color: var(--disable_components_gray_secondary);
 }
 
 .Settings .switchLang .switchIndicator {
-    right: 25px;
+  right: 25px;
 }
 
 .Settings .streakCard {
-    max-width: 75%;
-    min-width: auto;
-    width: 100%;
-    margin: 0 auto;
+  max-width: 75%;
+  min-width: auto;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .Settings .streakCard img {
-    width: 50px;
+  width: 50px;
 }
 
 .Settings .streakCard .cardContent {
-    height: 129px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-direction: row;
+  height: 129px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-direction: row;
 }
 
 .Settings .support {
-    margin: 43px auto;
-
+  margin: 43px auto;
 }
 
 .Settings .support p {
-    font-size: 20px;
-    font-weight: 900;
-    line-height: 22px;
-    text-align: center;
+  font-size: 20px;
+  font-weight: 900;
+  line-height: 22px;
+  text-align: center;
 }
 
-
 .Calendar {
-    width: 100%;
-    margin: 0 auto;
-    background: white;
-    border-radius: 20px;
-    padding: 20px 25px;
+  width: 100%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 20px;
+  padding: 20px 25px;
 }
 
 .Calendar .controls {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .Calendar .controls button {
-    background-color: #fff;
-    border: none;
-    padding: 5px 12px;
-    border-radius: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
+  background-color: #fff;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .Calendar .grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 6px;
-    text-align: left;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  text-align: left;
 }
 
 .Calendar .grid:first-child {
-    border-bottom: 1px solid blue;
+  border-bottom: 1px solid blue;
 }
 
 .Calendar .weekday {
-    font-size: 18px;
-    font-weight: 900;
-    color: var(----text_color_dark_primary) !important;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(----text_color_dark_primary) !important;
 }
 
 .Calendar .day {
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 800;
-    color: #9EA2AD !important;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 800;
+  color: #9ea2ad !important;
 }
 
 .Calendar .weekend {
-    color: #F85B5BC7 !important;
+  color: #f85b5bc7 !important;
 }
 
 .Calendar .dayOff {
-    color: var(--component_red_primary) !important;
+  color: var(--component_red_primary) !important;
 }
 
 .Calendar .active {
-    background-color: var(--main_components_primary);
-    color: var(--text_color_light_primary) !important;
+  background-color: var(--main_components_primary);
+  color: var(--text_color_light_primary) !important;
 }
 
-
 .Calendar .divider {
-    height: 1px;
-    background-color: #E2F1FF;
-    margin: 9px 0;
+  height: 1px;
+  background-color: #e2f1ff;
+  margin: 9px 0;
 }
 
 .Profile .inputs {
-    width: 85%;
-    margin: auto;
-    margin-top: 38px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  width: 85%;
+  margin: auto;
+  margin-top: 38px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 .Profile .inputs .inputWrapper p {
-    font-size: 15px;
-    font-weight: 800;
-    color: var(--text_color_dark_secondary);
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text_color_dark_secondary);
 }
 
 .Profile .inputs .inputWrapper input {
-    width: 100%;
-    height: 55px;
-    border: 3px solid var(--disable_components_gray_primary);
-    border-radius: 15px;
-    outline: none;
-    padding-left: 20px;
-    margin-top: 10px;
-    font-size: 17px;
-    font-weight: 800;
-    color: var(--text_color_dark_primary);
+  width: 100%;
+  height: 55px;
+  border: 3px solid var(--disable_components_gray_primary);
+  border-radius: 15px;
+  outline: none;
+  padding-left: 20px;
+  margin-top: 10px;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text_color_dark_primary);
 }
 
 .Profile .button {
-    width: 85%;
-    margin: auto;
-    margin-top: 90px;
+  width: 85%;
+  margin: auto;
+  margin-top: 90px;
 }
 
+@media (max-width: 410px) {
+  .Profile {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
-@media (max-width:410px) {
-    .Profile {
-        padding-left: 10px;
-        padding-right: 10px;
-    }
+  .Profile .card {
+    width: 90px;
+    height: 120px;
+  }
 
-    .Profile .card {
-        width: 90px;
-        height: 120px;
-    }
+  .Settings .card {
+    width: 70%;
+  }
 
-    .Settings .card {
-        width: 70%;
-    }
-
-    .Settings .card .cardContent {
-        gap: 5px;
-    }
+  .Settings .card .cardContent {
+    gap: 5px;
+  }
 }
 
-
-
-@media (max-width:350px) {
-    .Profile .streakCard .card {
-        width: 80px;
-        max-height: 120px;
-        min-height: 120px;
-    }
+@media (max-width: 350px) {
+  .Profile .streakCard .card {
+    width: 80px;
+    max-height: 120px;
+    min-height: 120px;
+  }
 }

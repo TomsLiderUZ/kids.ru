@@ -5,14 +5,18 @@ import styles from "../../type2.module.css";
 import Loading from "../../../../components/loading/loading";
 import { useParams } from "react-router-dom";
 
-const Microphone = lazy(() => import("../../../../components/microphone/microphone"));
+const Microphone = lazy(() =>
+  import("../../../../components/microphone/microphone")
+);
 const Title = lazy(() => import("../../../../components/title/title"));
 const Button = lazy(() => import("../../../../components/button/button"));
 const Alert = lazy(() => import("../../../../components/alert/alert"));
-const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
+const GameVideo = lazy(() =>
+  import("../../../../components/gameVideo/gameVideo")
+);
 
 const TypeOne = React.memo(() => {
-  const { id } = useParams()
+  const { id } = useParams();
   const [lessonId, gameId] = id.split(".");
 
   const {
@@ -28,8 +32,9 @@ const TypeOne = React.memo(() => {
     setCurrentPhrase,
     setVideoPlayed,
     setOpenResultCard,
-    setCurrentLessonId, setCurrentGameId
-
+    setCurrentLessonId,
+    setCurrentGameId,
+    isUz, // 🔄 til holatini olish
   } = useGlobalContext();
 
   const [data, setData] = useState([]);
@@ -46,7 +51,9 @@ const TypeOne = React.memo(() => {
     setLoading(true);
     setError(null);
     try {
-      const res = await fetch(`https://api.kidsru.uz/api/wheel-phrases/next/${order}`);
+      const res = await fetch(
+        `https://api.kidsru.uz/api/wheel-phrases/next/${order}`
+      );
       const data = await res.json();
       setData(data?.words);
     } catch (err) {
@@ -60,7 +67,6 @@ const TypeOne = React.memo(() => {
     getGameData(currentOrder);
   }, [currentOrder]);
 
-
   const handleSpinClick = () => {
     if (spinDisabled) return;
     setSpinDisabled(true);
@@ -69,30 +75,30 @@ const TypeOne = React.memo(() => {
     setMustSpin(true);
     setMicDisabled(true);
 
-    // Tanlangan elementning uslubini tozalash
-    setData((prevData) =>
-      prevData.map((item) => ({ ...item, style: {} }))
-    );
+    setData((prevData) => prevData.map((item) => ({ ...item, style: {} })));
   };
+
   const handleSpinEnd = () => {
     setMustSpin(false);
     setMicDisabled(false);
     setCurrentPhrase(data[prizeNumber].option);
     setData((prevData) => {
       const updatedData = [...prevData];
-      updatedData[prizeNumber].style = { backgroundColor: "#1CB0F6", color: "#000" };
+      updatedData[prizeNumber].style = {
+        backgroundColor: "#1CB0F6",
+        color: "#000",
+      };
       return updatedData;
     });
 
-    // Tugma matnini o'zgartirish
-    setButtonText("ПРОВЕРИТЬ");
+    // Tugma matnini o'zgartirish tilga qarab
+    setButtonText(isUz ? "TEKSHIRISH" : "ПРОВЕРИТЬ");
   };
 
   useEffect(() => {
     setCurrentLessonId(lessonId);
     setCurrentGameId(gameId);
   }, [lessonId, gameId]);
-
 
   return (
     <div className={styles.gameO}>
@@ -101,12 +107,22 @@ const TypeOne = React.memo(() => {
           <Loading />
         </div>
       ) : !data ? (
-        <GameVideo url={"/assets/video/ending-1.1.mp4"} poster="" video="" onClick={() => {
-          setVideoPlayed(true)
-          setOpenResultCard(true)
-        }} />
+        <GameVideo
+          url={"/assets/video/ending-1.1.mp4"}
+          poster=""
+          video=""
+          onClick={() => {
+            setVideoPlayed(true);
+            setOpenResultCard(true);
+          }}
+        />
       ) : !videoPlayed ? (
-        <GameVideo url={"/assets/lessons/start-1-2.mp4"} poster="" video="" onClick={() => setVideoPlayed(true)} />
+        <GameVideo
+          url={"/assets/lessons/start-1-2.mp4"}
+          poster=""
+          video=""
+          onClick={() => setVideoPlayed(true)}
+        />
       ) : (
         <>
           <div
@@ -123,7 +139,9 @@ const TypeOne = React.memo(() => {
                 justifyContent: "center",
               }}
               onClick={handleSpinClick}
-              className={`${styles.carouselBlock} ${spinDisabled ? styles.disabled : ""}`}
+              className={`${styles.carouselBlock} ${
+                spinDisabled ? styles.disabled : ""
+              }`}
             >
               <div style={{ transform: "rotate(134deg)" }}>
                 {/* {data &&
@@ -158,8 +176,9 @@ const TypeOne = React.memo(() => {
               >
                 <Microphone
                   onClick={handleSpeechRecognition}
-                  className={`${styles.microphoneBase} ${micActive ? "activeMic" : ""
-                    }`}
+                  className={`${styles.microphoneBase} ${
+                    micActive ? "activeMic" : ""
+                  }`}
                   disabled={micDisabled}
                 />
               </div>
@@ -168,20 +187,35 @@ const TypeOne = React.memo(() => {
 
           <div className={"fixedButton"}>
             <Button
-              value={buttonText}
+              value={
+                buttonText === "КРУТИТЬ КОЛЕСО"
+                  ? isUz
+                    ? "G'ILOFNI AYLANTIRISH"
+                    : "КРУТИТЬ КОЛЕСО"
+                  : buttonText
+              }
               className={"blue"}
               onClick={
-                buttonText === "КРУТИТЬ КОЛЕСО"
+                buttonText === "КРУТИТЬ КОЛЕСО" ||
+                buttonText === "G'ILOFNI AYLANTIRISH"
                   ? handleSpinClick
                   : handleSpeechRecognition
               }
-              disabled={spinDisabled && buttonText === "КРУТИТЬ КОЛЕСО"}
+              disabled={
+                spinDisabled &&
+                (buttonText === "КРУТИТЬ КОЛЕСО" ||
+                  buttonText === "G'ILOFNI AYLANTIRISH")
+              }
             />
           </div>
+
           {alertHandler && (
             <Alert
               wrong={!isCorrect}
-              correctText={!isCorrect && "Попробуйте еще раз"}
+              correctText={
+                !isCorrect &&
+                (isUz ? "Yana urinib ko‘ring" : "Попробуйте еще раз")
+              }
               setActiveButton={setActiveButton}
               setAlertHandler={setAlertHandler}
               onRepeat={() => {

@@ -9,10 +9,19 @@ const Title = lazy(() => import("../../../../components/title/title"));
 const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
 
 const Type2 = React.memo(() => {
-    const { id } = useParams()
+    const { id } = useParams();
     const [lessonId, gameId] = id.split(".");
 
-    const { isCorrect, setIsCorrect, handleSpeak, setOpenResultCard, setCurrentLessonId, setCurrentGameId } = useGlobalContext();
+    const {
+        isCorrect,
+        setIsCorrect,
+        handleSpeak,
+        setOpenResultCard,
+        setCurrentLessonId,
+        setCurrentGameId,
+        isUz
+    } = useGlobalContext();
+
     const [activeButton, setActiveButton] = useState(null);
     const [alertHandler, setAlertHandler] = useState(false);
     const [videoPlayed, setVideoPlayed] = useState(false);
@@ -49,32 +58,32 @@ const Type2 = React.memo(() => {
                         <Title text={"Как правильно поздороваться с учителем?"} />
                         <div className={styles.colors}>
                             <button
-                                className={`${styles.buttonTwoo1} ${activeButton?.textContent === "Привет" ? styles.active : ""
-                                    }`}
+                                className={`${styles.buttonTwoo1} ${activeButton?.textContent === "Привет" ? styles.active : ""}`}
                                 onClick={(e) => handleButtonClick(e, false)}
                             >
                                 Привет
                             </button>
                             <button
-                                className={`${styles.buttonTwoo1} ${activeButton?.textContent === "Здравствуйте" ? styles.active : ""
-                                    }`}
+                                className={`${styles.buttonTwoo1} ${activeButton?.textContent === "Здравствуйте" ? styles.active : ""}`}
                                 onClick={(e) => handleButtonClick(e, true)}
                             >
                                 Здравствуйте
                             </button>
                         </div>
                     </div>
+
                     <div className={"fixedButton"}>
                         <Button
-                            value={"ПРОВЕРИТЬ"}
+                            value={isUz ? "TEKSHIRISH" : "ПРОВЕРИТЬ"}
                             className={activeButton && "blue"}
                             onClick={() => setAlertHandler(true)}
                         />
                     </div>
+
                     {alertHandler && (
                         <Alert
                             wrong={!isCorrect}
-                            correctText={!isCorrect && "Попробуйте еще раз"}
+                            correctText={!isCorrect && (isUz ? "Yana urinib ko‘ring" : "Попробуйте еще раз")}
                             setActiveButton={setActiveButton}
                             setAlertHandler={setAlertHandler}
                             onRepeat={() => {
@@ -85,7 +94,7 @@ const Type2 = React.memo(() => {
                                 setActiveButton(null);
                                 setIsCorrect(null);
                                 setAlertHandler(false);
-                                setOpenResultCard(true)
+                                setOpenResultCard(true);
                             }}
                         />
                     )}

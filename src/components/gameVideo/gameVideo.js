@@ -1,5 +1,6 @@
 import React, { lazy, useRef, useState } from "react";
 import styles from "./gamevideo.module.css";
+import { useGlobalContext } from "../../context/globalContext"; // ✅ Til kontekstini olish
 
 const Button = lazy(() => import("../button/button"));
 
@@ -8,16 +9,16 @@ const GameVideo = React.memo(({ onClick, url }) => {
     const [videoEnd, setVideoEnd] = useState(false);
     const videoRef = useRef(null);
 
+    const { isUz } = useGlobalContext(); // ✅ Til holatini olish
+
     const handlePlayClick = () => {
         if (videoRef.current) {
-            // Agar video tugagan bo'lsa, qayta boshlashni faollashtiramiz
             if (videoEnd) {
-                videoRef.current.currentTime = 0; // Video boshidan o'ynatish
+                videoRef.current.currentTime = 0;
                 videoRef.current.play();
                 setIsPlaying(true);
-                setVideoEnd(false); // Video qayta boshlandi
+                setVideoEnd(false);
             } else {
-                // Agar video o'ynayotgan bo'lsa, uni to'xtatamiz
                 if (isPlaying) {
                     videoRef.current.pause();
                     setIsPlaying(false);
@@ -36,20 +37,18 @@ const GameVideo = React.memo(({ onClick, url }) => {
                     <video
                         ref={videoRef}
                         src={url ? url : "/assets/video/talking.mp4"}
-                        // poster="/assets/images/poster.png"
                         playsInline
-                        // controls
                         onEnded={() => {
-                            setVideoEnd(true); // Video tugadi
-                            setIsPlaying(false); // Video to'xtadi
+                            setVideoEnd(true);
+                            setIsPlaying(false);
                         }}
-                        onClick={handlePlayClick} // Video ustiga bosish
+                        onClick={handlePlayClick}
                     ></video>
 
                     {!isPlaying && (
                         <div
                             className={`${styles.play} ${videoEnd ? styles.playEnd : ""}`}
-                            onClick={handlePlayClick} // Play ikonkasini bosish
+                            onClick={handlePlayClick}
                         >
                             {videoEnd ? (
                                 <svg
@@ -101,17 +100,13 @@ const GameVideo = React.memo(({ onClick, url }) => {
                 </div>
             </div>
 
-
-
             <div className={"fixedButton"}>
                 <Button
-                    value={"ПЕРЕЙТИ К ИГРЕ"}
+                    value={isUz ? "O‘YINGA O‘TISH" : "ПЕРЕЙТИ К ИГРЕ"}
                     className={videoEnd && "blue"}
-                    // onClick={videoEnd && onClick}
                     onClick={onClick}
                 />
             </div>
-
         </div>
     );
 });

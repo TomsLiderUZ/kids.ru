@@ -1,4 +1,3 @@
-// LessonBadge.jsx
 import React, { useEffect, useState } from "react";
 import styles from "./lessonBadge.module.css";
 import Button from "../button/button";
@@ -9,8 +8,9 @@ import ConfettiCanvas from "../confettiCanvas/ConfettiCanvas.js";
 const LessonBadge = () => {
   const [openCard, setOpenCard] = useState(false);
   const navigate = useNavigate();
-  const [isActiveButton, setIsActiveButton] = useState(true)
-  const { lessonBadge, setLessonBadge, finishedLessonId } = useGlobalContext();
+  const [isActiveButton, setIsActiveButton] = useState(true);
+  const { lessonBadge, setLessonBadge, finishedLessonId, isUz } =
+    useGlobalContext();
 
   const handleButtonClick = () => {
     if (!openCard) {
@@ -23,27 +23,32 @@ const LessonBadge = () => {
 
   useEffect(() => {
     if (openCard) {
-      setIsActiveButton(false)
+      setIsActiveButton(false);
       setTimeout(() => {
-        setIsActiveButton(true)
+        setIsActiveButton(true);
       }, 1500);
     }
-  }, [openCard])
+  }, [openCard]);
 
   return (
     <div className={styles.screen}>
       <div className={styles.container}>
         <ConfettiCanvas openCard={openCard} />
-        <div className={`${styles.cardWrapper} ${openCard ? styles.flipped : ""}`}>
+        <div
+          className={`${styles.cardWrapper} ${openCard ? styles.flipped : ""}`}
+        >
           <div className={styles.cardFront}>
             <img src="/assets/images/closedLessonBadge.png" alt="" />
             <p>
-              <span>?</span> <br /> СЕКРЕТНАЯ КАРТОЧКА
+              <span>?</span> <br />{" "}
+              {isUz ? "SIRLI KARTA" : "СЕКРЕТНАЯ КАРТОЧКА"}
             </p>
           </div>
 
           <div className={styles.cardBack}>
-            <div className={styles.title}>УРОК {finishedLessonId}</div>
+            <div className={styles.title}>
+              {isUz ? "DARS" : "УРОК"} {finishedLessonId}
+            </div>
             <div className={styles.info}>
               <img src="/assets/images/lessonBadgeStar.png" alt="" />
               <p>4/6</p>
@@ -55,11 +60,22 @@ const LessonBadge = () => {
             <div className={styles.bottom}>
               <img src="/assets/images/lessonBadgeBottom.png" alt="" />
             </div>
+            <div className={styles.msg}>
+              {isUz ? "SALOMLASHUV USTASI" : "МАСТЕР ПРИВЕТСТВИЙ"}{" "}
+            </div>
           </div>
         </div>
         <div className={styles.button}>
           <Button
-            value={openCard ? "ЗАВЕРШИТЬ" : "ОТКРЫТЬ КАРТОЧКУ"}
+            value={
+              openCard
+                ? isUz
+                  ? "YAKUNLASH"
+                  : "ЗАВЕРШИТЬ"
+                : isUz
+                ? "KARTANI OCHISH"
+                : "ОТКРЫТЬ КАРТОЧКУ"
+            }
             className={isActiveButton ? "blue" : ""}
             onClick={handleButtonClick}
           />

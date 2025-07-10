@@ -8,37 +8,50 @@ const Alert = lazy(() => import("../../../../components/alert/alert"));
 const SpeakerIcon = lazy(() => import("../../../../components/speaker"));
 const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
 
-
 const Type2 = React.memo(() => {
-    const { id } = useParams()
+    const { id } = useParams();
     const [lessonId, gameId] = id.split(".");
 
-    const { isCorrect, setIsCorrect, handleSpeak, setOpenResultCard, setCurrentLessonId, setCurrentGameId } = useGlobalContext();
+    const {
+        isCorrect,
+        setIsCorrect,
+        handleSpeak,
+        setOpenResultCard,
+        setCurrentLessonId,
+        setCurrentGameId,
+        isUz,
+    } = useGlobalContext();
+
     const [activeButtonIndex, setActiveButtonIndex] = useState(null);
     const [alertHandler, setAlertHandler] = useState(false);
     const [videoPlayed, setVideoPlayed] = useState(false);
 
-    const handleButtonClick = (index, correct) => {
-        setActiveButtonIndex(index);
-        setIsCorrect(correct);
-    };
+    const options = [
+        { src: "/assets/images/2.3-1.png", correct: false },
+        { src: "/assets/images/2.3-2.png", correct: false },
+        { src: "/assets/images/2.3-3.png", correct: false },
+        { src: "/assets/images/2.3-4.png", correct: true },
+    ];
 
     useEffect(() => {
         setCurrentLessonId(lessonId);
         setCurrentGameId(gameId);
     }, [lessonId, gameId]);
 
-    return (
+    const handleButtonClick = (index, correct) => {
+        setActiveButtonIndex(index);
+        setIsCorrect(correct);
+    };
 
+    return (
         <>
             {!videoPlayed ? (
                 <GameVideo
-                    poster={""}
-                    video={""}
+                    poster=""
+                    video=""
                     onClick={() => setVideoPlayed(true)}
                 />
             ) : (
-
                 <>
                     <div className={`${styles.Type2} heightScroll`}>
                         <div className={styles.speaker}>
@@ -52,34 +65,30 @@ const Type2 = React.memo(() => {
                         </div>
 
                         <div className={styles.blocks}>
-                            {[
-                                { src: "/assets/images/2.3-1.png", correct: false },
-                                { src: "/assets/images/2.3-2.png", correct: false },
-                                { src: "/assets/images/2.3-3.png", correct: false },
-                                { src: "/assets/images/2.3-4.png", correct: true },
-                            ].map((item, index) => (
+                            {options.map((item, index) => (
                                 <button
                                     key={index}
                                     onClick={() => handleButtonClick(index, item.correct)}
                                     className={activeButtonIndex === index ? styles.active : ""}
                                 >
-                                    <img src={`${item.src}`} alt={""} />
+                                    <img src={item.src} alt={`option-${index + 1}`} />
                                 </button>
                             ))}
                         </div>
                     </div>
 
-                    <div className={"fixedButton"}>
+                    <div className="fixedButton">
                         <Button
-                            value={"ПРОВЕРИТЬ"}
-                            className={activeButtonIndex !== null && "blue"}
+                            value={isUz ? "TEKSHIRISH" : "ПРОВЕРИТЬ"}
+                            className={activeButtonIndex !== null ? "blue" : ""}
                             onClick={() => setAlertHandler(true)}
                         />
                     </div>
+
                     {alertHandler && (
                         <Alert
                             wrong={!isCorrect}
-                            correctText={!isCorrect && "Слово или фраза, из карточки 1"}
+                            correctText={!isCorrect && (isUz ? "1-kartochkadagi so'z yoki ibora" : "Слово или фраза, из карточки 1")}
                             setActiveButton={setActiveButtonIndex}
                             setAlertHandler={setAlertHandler}
                             onRepeat={() => {
@@ -90,7 +99,7 @@ const Type2 = React.memo(() => {
                                 setAlertHandler(false);
                                 setActiveButtonIndex(null);
                                 setIsCorrect(null);
-                                setOpenResultCard(true)
+                                setOpenResultCard(true);
                             }}
                         />
                     )}

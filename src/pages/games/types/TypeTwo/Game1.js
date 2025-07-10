@@ -9,17 +9,26 @@ const Title = lazy(() => import("../../../../components/title/title"));
 const GameVideo = lazy(() => import("../../../../components/gameVideo/gameVideo"));
 
 const Type2 = React.memo(() => {
-    const { id } = useParams()
+    const { id } = useParams();
     const [lessonId, gameId] = id.split(".");
 
-    const { isCorrect, setIsCorrect, handleSpeak, setOpenResultCard, setCurrentLessonId, setCurrentGameId } = useGlobalContext();
+    const {
+        isCorrect,
+        setIsCorrect,
+        handleSpeak,
+        setOpenResultCard,
+        setCurrentLessonId,
+        setCurrentGameId,
+        isUz
+    } = useGlobalContext();
+
     const [activeButton, setActiveButton] = useState(null);
     const [alertHandler, setAlertHandler] = useState(false);
     const [videoPlayed, setVideoPlayed] = useState(false);
 
     const handleButtonClick = (e, correct) => {
         const clickedButton = e.target;
-        setActiveButton(clickedButton.textContent);  // Buttonning matnini saqlaymiz
+        setActiveButton(clickedButton.textContent); // faqat textContent ni saqlayapti
         setIsCorrect(correct);
         handleSpeak(clickedButton.textContent);
     };
@@ -63,7 +72,7 @@ const Type2 = React.memo(() => {
                     </div>
                     <div className={"fixedButton"}>
                         <Button
-                            value={"ПРОВЕРИТЬ"}
+                            value={isUz ? "TEKSHIRISH" : "ПРОВЕРИТЬ"}
                             className={activeButton ? "blue" : ""}
                             onClick={() => setAlertHandler(true)}
                         />
@@ -71,7 +80,7 @@ const Type2 = React.memo(() => {
                     {alertHandler && (
                         <Alert
                             wrong={!isCorrect}
-                            correctText={!isCorrect && "Слово или фраза, из карточки 1"}
+                            correctText={!isCorrect && (isUz ? "1-kartochkadagi so‘z yoki ibora" : "Слово или фраза, из карточки 1")}
                             setActiveButton={setActiveButton}
                             setAlertHandler={setAlertHandler}
                             onRepeat={() => {
@@ -82,7 +91,7 @@ const Type2 = React.memo(() => {
                                 setActiveButton(null);
                                 setIsCorrect(null);
                                 setAlertHandler(false);
-                                setOpenResultCard(true)
+                                setOpenResultCard(true);
                             }}
                         />
                     )}

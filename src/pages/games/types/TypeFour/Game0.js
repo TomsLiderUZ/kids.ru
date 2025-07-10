@@ -21,6 +21,7 @@ const Type4 = React.memo(() => {
     setOpenResultCard,
     setCurrentLessonId,
     setCurrentGameId,
+    isUz
   } = useGlobalContext();
   const [gameData, setGameData] = useState(null);
   const [alertHandler, setAlertHandler] = useState(false);
@@ -126,7 +127,7 @@ const Type4 = React.memo(() => {
           </div>
           <div className="fixedButton">
             <Button
-              value={"ПРОВЕРИТЬ"}
+              value={isUz ? "TEKSHIRISH" : "ПРОВЕРИТЬ"}
               className={activeButton ? "blue" : ""}
               onClick={handleCheckResult}
             />
@@ -136,9 +137,7 @@ const Type4 = React.memo(() => {
               wrong={!isCorrect}
               correctText={
                 !isCorrect &&
-                `Правильный ответ: ${
-                  gameData && gameData.options[gameData.correctIndex].text
-                }`
+                (isUz ? "Yana urinib ko‘ring" : "Попробуйте еще раз")
               }
               setActiveButton={setActiveButton}
               setAlertHandler={setAlertHandler}
@@ -146,7 +145,6 @@ const Type4 = React.memo(() => {
                 setActiveButton(null);
                 setIsCorrect(null);
                 setAlertHandler(false);
-                setOpenResultCard(true);
               }}
             />
           )}
